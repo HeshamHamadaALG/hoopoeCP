@@ -298,6 +298,8 @@ label {
   
   .has-val {
     height: 48px !important;
+    top: 14px;
+    
   }
   
   .has-val + .focus-input100 + .label-input100 {
@@ -723,6 +725,12 @@ label {
         animation-duration: 6s;
         position: relative;
     }
+    /* khaled */
+    .sub-form {
+      animation-name: test-text;
+      animation-duration: 1s;
+      position: relative;
+  }
     .footer-cont{
         display: none;
     }
