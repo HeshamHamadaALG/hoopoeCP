@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>HOOPOE WiFi</title>
     <link href="../css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../phone_country_code/intl-tel-input-15.0.0/build/css/intlTelInput.css">
+    
 </head>
 
 <body>
@@ -29,7 +31,7 @@
                     <div class="form">
                         <form action="" method="" class="login100-form" role="form">
                             <div class="wrap-input100">
-                                <input id="mobile" class="input100" name="mobile" type="text" size="18" required />
+                                <input id="mobile" class="input100" name="mobile" type="tel" size="18" required />
                                 <span class="focus-input100"></span>
                                 <span class="label-input100">Mobile</span>
                                 <!-- <label for="mobile" class="float-label">Mobile</label> -->
@@ -70,6 +72,22 @@
     </div>
     <script src="../js/particles.min.js"></script>
     <script src="../js/main.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script src="../../phone_country_code/intl-tel-input-15.0.0/build/js/intlTelInput.js"></script>
+    <script>
+        var input = document.querySelector("#mobile");
+        window.intlTelInput(input, {
+        initialCountry: "auto",
+        geoIpLookup: function(callback) {
+            $.get('https://ipinfo.io', function() {}, "jsonp").always(function(resp) {
+            var countryCode = (resp && resp.country) ? resp.country : "";
+            callback(countryCode);
+            });
+        },
+        utilsScript: "../../phone_country_code/intl-tel-input-15.0.0/build/js/utils.js" // just for formatting/placeholders etc
+        });  
+        
+    </script>
 
 </body>
 
