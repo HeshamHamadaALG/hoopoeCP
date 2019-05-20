@@ -504,6 +504,10 @@ input[name="sex"] {
     background-color: #e7a15e;
   }
 
+  .form-val{
+    margin: 5% !important;
+    align-self: center;
+    }
 
 /* Mobile */
 /* 
