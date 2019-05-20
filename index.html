@@ -17,7 +17,7 @@
         </canvas>
     </div>
     <div class="contain">
-        <div class="full-box">
+        <div class="full-box" id="full-box">
             <div class="logo-cont">
                 <div class="logo">
                     <div class="logo-cover"></div>
@@ -30,10 +30,10 @@
                 <div class="logo test-mob" id="rightSide">
                     <div class="form">
                         <div class="signup">
-                                <div style="text-align: center;">
-                                        <h2 class="over-button">Completely for Free, Unlimited Speed, Unlimited Time</h2>
-                                    </div>
-                                <button class="btn btn-1" id="load-signup" type="submit" name="Submit">SignUp</button>
+                            <div style="text-align: center;">
+                                <h2 class="over-button">Completely for Free, Unlimited Speed, Unlimited Time</h2>
+                            </div>
+                            <button class="btn btn-1" id="load-signup" type="submit" name="Submit">SignUp</button>
                         </div>
                     </div>
                 </div>
@@ -49,8 +49,15 @@
     <script src="./asset_files/js/main.js"></script>
     <!-- <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script> -->
     <script src="./asset_files/js/jquery-3.4.1.min.js"></script>
-   
+
     <script src="./asset_files/js/plugin.js"></script>
 </body>
+
+<script>
+    var box = document.getElementById('full-box');
+    var height = box.offsetHeight;
+    box.setAttribute("style", `height: ${height}px !important;`);
+    console.log(height);
+</script>
 
 </html>
