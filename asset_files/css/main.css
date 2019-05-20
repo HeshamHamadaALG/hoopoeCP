@@ -78,6 +78,9 @@ body {
 .powered {
   color: #aaa;
 }
+.powered a {
+  color: #333;
+}
 .signup{
   width: 100%;
   display: -webkit-box;
@@ -648,6 +651,7 @@ width: 40% !important;
       position: relative;
       font-size: 200%;
       top: 0%;
+      overflow: scroll ; 
   }
   .footer-cont{
       order: 4;
