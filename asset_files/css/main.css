@@ -449,11 +449,64 @@ label {
     right: 15px;
   }
 }
+.over-button{
+  align-self: center;
+  font-family: Montserrat-SemiBold;
+  color: #999999;
+  font-size: 1.5vw;
+}
+.separator {
+  text-align: center;
+}
 
+.radio{
+    align-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.radio-inner{
+ margin: auto;
+}
+.radio-inner input {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+/* .r-btn{
+  width: 100px;
+} */
+input[name="sex"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    outline: none;
+  }
+  input[name="sex"]:after {
+    font-family: Montserrat-SemiBold;
+    display: inline-block;
+    text-align: center;
+    font-size: 100%;
+    content: attr(data-icon);
+    padding: 15px 15px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    color: rgba(0, 0, 0, 0.4);
+    transition: box-shadow 1s, color 1s;
+    z-index: 103;
+    background-color: #999999;
+  }
+  input[name="sex"]:checked:after {
+    box-shadow: 2px 2px 14px rgba(0, 0, 0, 0.4);
+    color: rgba(255, 255, 255, 0.6);
+    background-color: #e7a15e;
+  }
 
 
 /* Mobile */
-
+/* 
 @media (max-height: 480px) and (min-height: 381px) and (min-width: 230px) and (max-width: 430px) {
   .full-box {
     margin: 4% 2%;
@@ -479,12 +532,7 @@ label {
   order: 3;
 }
 }
-.over-button{
-      align-self: center;
-      font-family: Montserrat-SemiBold;
-      color: #999999;
-      font-size: 1.5vw;
-}
+ */
 /* @media (max-height: 580px) and (min-height: 481px) and (min-width: 300px) and (max-width: 540px) {
   .full-box {
     margin: 4% 2%;
@@ -605,6 +653,10 @@ label {
     .over-button{
       font-size: 5vw;
 }
+input[name="sex"]:after {
+  width: 18vw;
+}
+
 
      /* animation  */
      @keyframes centLine-mob {
@@ -739,6 +791,9 @@ label {
     .footer-cont{
         display: none;
     }
+    input[name="sex"]:after {
+      width: 6vw;
+    }
     
     /* animation  */
     @keyframes centLine {
@@ -813,50 +868,3 @@ label {
     }
 
 }
-
-.separator {
-  text-align: center;
-}
-
-.radio{
-    align-content: center;
-    align-items: center;
-    display: flex;
-}
-
-.radio-inner{
- margin: auto;
-}
-.radio-inner input {
-    margin-left: 10px;
-    margin-right: 10px;
-}
-input[name="sex"] {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    -o-appearance: none;
-    -ms-appearance: none;
-    appearance: none;
-    outline: none;
-  }
-  input[name="sex"]:after {
-    font-family: Montserrat-SemiBold;
-    display: inline-block;
-    text-align: center;
-    font-size: 16px;
-    content: attr(data-icon);
-    padding: 15px 15px;
-    margin-top: 5px;
-    margin-bottom: 10px;
-    border-radius: 15px;
-    color: rgba(0, 0, 0, 0.4);
-    transition: box-shadow 1s, color 1s;
-    z-index: 103;
-    background-color: #999999;
-  }
-  input[name="sex"]:checked:after {
-    box-shadow: 2px 2px 14px rgba(0, 0, 0, 0.4);
-    color: rgba(255, 255, 255, 0.6);
-    background-color: #e7a15e;
-  }
-  
