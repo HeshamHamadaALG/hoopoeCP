@@ -74,7 +74,31 @@
             let gender = $('input[name=sex]:checked').val(); 
 
             if (mobile && age && gender){
-                $( "#rightSide" ).load( "./asset_files/pages/validation.html" );
+                // $( "#rightSide" ).load( "./asset_files/pages/validation.html" );
+                let userObj={phone:mobile,age,gender}
+                fetch("https://hoopoeapi.herokuapp.com/users" ,{
+                            method: 'POST',
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify(userObj)
+                        })
+                        .then((response) => {
+                            return response.json(); 
+                        }).then((response)=>{
+                            if (response.status==="success"){
+                                // localStorage.setItem('userPhone', JSON.stringify({phone}));
+                                window.location.href="./validation.html";
+                            }
+                            else {
+                                let alertDiv=document.getElementById("alert");
+                                alertDiv.innerHTML="<div id=\"al\" class=\"alert alert-danger\" role=\"alert\"><span>Error: Please try again</span><div>";
+                            }
+                        })
+                        .catch(function(error) {
+                            log('SignUp failed', error)
+                        });
+
             }else {
                 alert ("All Feild must be Filled ") ; 
             }
