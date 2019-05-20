@@ -1,0 +1,26 @@
+<meta charset="utf-8">
+<link rel="stylesheet" href="./intl-tel-input-15.0.0/build/css/intlTelInput.css">
+<div class="form-style-3">
+    <form>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <input id="phone" name="phone" type="tel">
+        <button type="submit">Submit</button>   
+        <script src="./intl-tel-input-15.0.0/build/js/intlTelInput.js"></script>
+        <script>
+            var input = document.querySelector("#phone");
+            window.intlTelInput(input, {
+            initialCountry: "auto",
+            geoIpLookup: function(callback) {
+                $.get('https://ipinfo.io', function() {}, "jsonp").always(function(resp) {
+                var countryCode = (resp && resp.country) ? resp.country : "";
+                callback(countryCode);
+                });
+            },
+            utilsScript: "./intl-tel-input-15.0.0/build/js/utils.js" // just for formatting/placeholders etc
+            });  
+            
+        </script>
+    </form>
+    
+</div>

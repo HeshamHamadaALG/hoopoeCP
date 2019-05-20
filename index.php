@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>HOOPOE WiFi</title>
+    <link rel="stylesheet" href="./phone_country_code/intl-tel-input-15.0.0/build/css/intlTelInput.css">
+
     <link href="./asset_files/css/main.css" rel="stylesheet">
 </head>
 
@@ -25,11 +27,12 @@
             <div class="line-cont"></div>
             <div class="form-cont">
                 <div class="form-cover"></div>
-                <div class="logo test-mob">
+                <div class="logo test-mob" id="rightSide">
                     <div class="form">
                         <div class="signup">
-                            <button class="btn btn-1" type="submit" name="Submit"
-                                onclick="window.location.href = './asset_files/pages/signup.html';">SignUp</button>
+                            <!-- <button class="btn btn-1" type="submit" name="Submit"
+                                onclick="window.location.href = './asset_files/pages/signup.html';">SignUp</button> -->
+                                <button class="btn btn-1" id="load-signup" type="submit" name="Submit">SignUp</button>
                         </div>
                     </div>
                 </div>
@@ -43,8 +46,15 @@
     </div>
     <script src="./asset_files/js/particles.min.js"></script>
     <script src="./asset_files/js/main.js"></script>
+<<<<<<< HEAD:index.html
     <script src="./asset_files/js/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+=======
+    <!-- <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script> -->
+    <script src="./asset_files/js/jquery-3.4.1.min.js"></script>
+   
+    <script src="./asset_files/js/plugin.js"></script>
+>>>>>>> 52f48f34f8c62cc5a0f55f49772118e7a24a4833:index.php
 </body>
 
 </html>
