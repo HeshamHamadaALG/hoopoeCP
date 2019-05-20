@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>HOOPOE WiFi</title>
+    <link rel="stylesheet" href="./asset_files/css/bootstrap.min.css">
     <link rel="stylesheet" href="./phone_country_code/intl-tel-input-15.0.0/build/css/intlTelInput.css">
 
     <link href="./asset_files/css/main.css" rel="stylesheet">
