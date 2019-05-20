@@ -1,10 +1,16 @@
-               <div class="logo test-mob">
+
+             
                     <div class="sub-form">
+                          
                         <form action="" method="" class="login100-form" role="form">
+                          
+                                <div class="alert alert-danger" style = "width: 100%" role="alert">
+                                        A simple danger alert—check it out!
+                                      </div>
                             <div class="wrap-input100">
-                                <input id="mobile" class="input100 has-val" name="mobile" type="tel" size="18" required />
-                                <span class="focus-input100"></span>
-                                <span class="label-input100">Mobile</span>
+                                <input id="mobile" class="input100 has-val" placeholder="Mobile" name="mobile" type="tel" size="18" required />
+                                <!-- <span class="focus-input100"></span>
+                                <span class="label-input100">Mobile</span> -->
                                 <!-- <label for="mobile" class="float-label">Mobile</label> -->
                             </div>
 
@@ -17,9 +23,9 @@
 
                             <div class="wrap-input100">
                                 <input id="age" class="input100" name="age" type="number" size="14" min="10" max="99"
-                                    required />
-                                <span class="focus-input100"></span>
-                                <span class="label-input100">Age</span>
+                                    required placeholder="Age from  10-99" />
+                                <!-- <span class="focus-input100"></span>
+                                <span class="label-input100">Age</span> -->
                             </div>
 
                             <div class="signup">
@@ -30,7 +36,7 @@
                         </form>
 
                     </div>
-                </div>
+                
        
     <!-- <script src="./asset_files/js/particles.min.js"></script>
     <script src="./asset_files/js/main.js"></script> -->
@@ -66,20 +72,6 @@
         });  
         
 
-        $("#loadValidation").click(function(e){
-            
-            e.preventDefault()  ; 
-            let mobile = $("#mobile").val() ; 
-            let age = $("#age").val() ; 
-            let gender = $('input[name=sex]:checked').val(); 
-
-            if (mobile && age && gender){
-                $( "#rightSide" ).load( "./asset_files/pages/validation.html" );
-            }else {
-                alert ("All Feild must be Filled ") ; 
-            }
-   })
+     
     </script>
-</body>
-
-</html>
+    <script src = "asset_files/js/plugin.js"> </script>
