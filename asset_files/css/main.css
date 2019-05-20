@@ -397,15 +397,20 @@ label {
   padding: 20px;
   background: #fff;
   border-radius: 5px;
-  width: 30%;
+  width: 40%;
   position: relative;
   transition: all 5s ease-in-out;
+  height: 70vh;
 }
 
 .popup h2 {
   margin-top: 0;
   color: #333;
   font-family: Tahoma, Arial, sans-serif;
+  text-align: center;
+}
+#terms_link {
+  cursor: pointer;
 }
 .popup .close {
   position: absolute;
@@ -421,7 +426,7 @@ label {
   color: #e7a15e;
 }
 .popup .content {
-  max-height: 30%;
+  max-height: 85%;
   overflow: auto;
 }
 
@@ -806,6 +811,10 @@ label {
 
 }
 
+.separator {
+  text-align: center;
+}
+
 .radio{
     align-content: center;
     align-items: center;
@@ -847,3 +856,4 @@ input[name="sex"] {
     color: rgba(255, 255, 255, 0.6);
     background-color: #e7a15e;
   }
+  
