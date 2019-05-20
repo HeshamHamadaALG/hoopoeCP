@@ -872,3 +872,8 @@ input[name="sex"]:after {
     }
 
 }
+.test-mob .alert-danger {
+  display: hidden;
+  font-size: 1rem;
+  margin-top: 2rem;
+}
