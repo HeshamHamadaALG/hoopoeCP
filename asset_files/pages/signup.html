@@ -6,7 +6,7 @@
                           
                                 <div class="alert alert-danger" style = "width: 100%" role="alert">
                                         A simple danger alert—check it out!
-                                      </div>
+                                </div>
                             <div class="wrap-input100">
                                 <input id="mobile" class="input100 has-val" placeholder="Mobile" name="mobile" type="tel" size="18" required />
                                 <!-- <span class="focus-input100"></span>
@@ -54,4 +54,25 @@
 
      
     </script>
-    <script src = "asset_files/js/plugin.js"> </script>
+
+    <script>
+        
+        $("#loadValidation").click(function(e){
+            
+            e.preventDefault()  ; 
+            let mobile = $("#mobile").val() ; 
+            let age = $("#age").val() ; 
+            let gender = $('input[name=sex]:checked').val(); 
+        
+            if (mobile && age && gender){
+                $( "#rightSide" ).load( "./asset_files/pages/validation.html" );
+            }else {
+                $(".alert-danger").css({
+                    display: 'block',
+                }) ; 
+                $(".alert-danger").html("<p> Sorry but all Field must be filled") ; 
+            }
+        })
+    
+    </script>
+    <!-- <script src = "asset_files/js/plugin.js"> </script> -->

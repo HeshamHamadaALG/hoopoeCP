@@ -236,6 +236,8 @@ input.input100 {
   -o-transition: all 0.4s;
   -moz-transition: all 0.4s;
   transition: all 0.4s;
+  border-bottom: 1px solid #333 ;
+  margin-bottom: 1rem ; 
 }
 
 /*---------------------------------------------*/
@@ -464,6 +466,7 @@ text-align: center;
   align-content: center;
   align-items: center;
   display: flex;
+  margin-top:2rem ; 
 }
 
 .radio-inner{
@@ -873,8 +876,10 @@ width: 18vw;
   }
 
 }
-.test-mob .alert-danger {
-display: hidden;
+form .alert {
+display: none;
 font-size: 1rem;
 margin-top: 2rem;
+margin-bottom: 0px ; 
+padding-bottom:0px   ; 
 }
