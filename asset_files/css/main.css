@@ -505,7 +505,7 @@ input[name="sex"]:after {
   font-family: Montserrat-SemiBold;
   display: inline-block;
   text-align: center;
-  font-size: 100%;
+  /* font-size: 100%; */
   content: attr(data-icon);
   padding: 15px 15px;
   margin-top: 5px;
@@ -623,7 +623,7 @@ width: 40% !important;
       height: 92vh;
   }
   .logo-cont{
-      flex: 35%;
+      flex: 45%;
       order: 1;
   }
   .logo-img{
@@ -653,7 +653,7 @@ width: 40% !important;
       z-index: 99 !important;
       position: relative; 
       animation: cover-form-mob 4s;
-      height: 20%;
+      height: 0%;
       align-self: flex-end;
   }
   .test-mob {
@@ -678,6 +678,8 @@ width: 40% !important;
 }
 input[name="sex"]:after {
 width: 18vw;
+font-size: 3vw;
+
 }
 
 
@@ -757,7 +759,7 @@ width: 18vw;
           top: 200%;
       }
       100% {
-          top: -8%;
+          top: 0%;
           flex: 100%;
           /* width: 100%; */
       }
@@ -816,6 +818,7 @@ width: 18vw;
   }
   input[name="sex"]:after {
     width: 6vw;
+    font-size: 1vw;
   }
   
   /* animation  */

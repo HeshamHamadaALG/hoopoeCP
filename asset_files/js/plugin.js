@@ -10,5 +10,6 @@ $(document).ready(function(){
     $( "#rightSide" ).load( "./asset_files/pages/signup.html" );
    });
    
+   
   
 })
