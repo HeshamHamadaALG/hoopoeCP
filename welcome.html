@@ -41,7 +41,7 @@
             </div>
             <div class="footer-cont">
                 <div>
-                    <p class="powered">Powered by <a target="_blank" href="http://hoopoe.digital/"> <strong>HOOPOE DIGITAL </strong></a></p>
+                    <p class="powered">Powered by <a target="_blank" href="http://hoopoe.digital/"> <strong class="bold">HOOPOE DIGITAL </strong></a></p>
 
                 </div>
             </div>
