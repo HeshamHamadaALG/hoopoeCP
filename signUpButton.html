@@ -1,7 +1,3 @@
-<?php
-    $mac= $_POST['mac']
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,7 +55,12 @@
     <script src="./asset_files/js/plugin.js"></script>
 </body>
 
-
+<script>
+    var box = document.getElementById('full-box');
+    var height = box.offsetHeight;
+    box.setAttribute("style", `height: ${height}px !important;`);
+    console.log(height);
+</script>
 
 
 
