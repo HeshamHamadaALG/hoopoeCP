@@ -4,9 +4,7 @@
                           
                         <form action="" method="" class="login100-form" role="form">
                           
-                                <div class="alert alert-danger" style = "width: 100%" role="alert">
-                                        A simple danger alert—check it out!
-                                </div>
+                                
                             <div class="wrap-input100">
                                 <input id="mobile" class="input100 has-val" placeholder="Mobile" name="mobile" type="tel" size="18" required />
                                 <!-- <span class="focus-input100"></span>
@@ -32,6 +30,10 @@
                                 <button class="btn btn-1" type="submit" name="Submit"
                                     id = "loadValidation">Send me Validation
                                     SMS</button>
+                            </div>
+
+                            <div class="alert alert-danger" style = "width: 100%" role="alert">
+                                    A simple danger alert—check it out!
                             </div>
                         </form>
 
@@ -63,38 +65,30 @@
             let mobile = $("#mobile").val() ; 
             let age = $("#age").val() ; 
             let gender = $('input[name=sex]:checked').val(); 
-        
-            if (mobile && age && gender){
-                // $( "#rightSide" ).load( "./asset_files/pages/validation.html" );
-                let userObj={phone:mobile,age,gender}
-                fetch("https://hoopoeapi.herokuapp.com/users" ,{
-                            method: 'POST',
-                            headers: {
-                                "Content-Type": "application/json",
-                            },
-                            body: JSON.stringify(userObj)
-                        })
-                        .then((response) => {
-                            return response.json(); 
-                        }).then((response)=>{
-                            if (response.status==="success"){
-                                // localStorage.setItem('userPhone', JSON.stringify({phone}));
-                                window.location.href="./validation.html";
-                            }
-                            else {
-                                let alertDiv=document.getElementById("alert");
-                                alertDiv.innerHTML="<div id=\"al\" class=\"alert alert-danger\" role=\"alert\"><span>Error: Please try again</span><div>";
-                            }
-                        })
-                        .catch(function(error) {
-                            log('SignUp failed', error)
-                        });
 
-            }else {
+        
+            if (!(mobile && age && gender)){
+
                 $(".alert-danger").css({
                     display: 'block',
                 }) ; 
-                $(".alert-danger").html("<p> Sorry but all Field must be filled") ; 
+                $(".alert-danger").html("<p> Sorry but all Field must be filled") ;
+            }
+            else if(!$.isNumeric(mobile)){
+                $(".alert-danger").css({
+                    display: 'block',
+                }) ; 
+                $(".alert-danger").html("<p> Sorry but mobile must be a number") ;
+                        }
+                        else if(!$.isNumeric(age) || !(age > 10 && age < 99)){
+                $(".alert-danger").css({
+                    display: 'block',
+                }) ; 
+                $(".alert-danger").html("<p> Sorry but age must be a number between 10 and 99") ;
+                        }
+            else {
+                $( "#rightSide" ).load( "./asset_files/pages/validation.html");
+                localStorage.setItem("mobile",mobile) ;  
             }
         })
     

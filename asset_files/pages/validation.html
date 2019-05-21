@@ -4,10 +4,13 @@
             <div class="wrap-input100">
                 <input id="validation" class="input100" name="Validation" type="text" size="18" placeholder="Code" required />
             </div>
+            
             <div class="signup">
                 <button class="btn btn-1" type="submit" name="Submit"
                     onclick="window.location.href = '../../index.html';">Send Code</button>
             </div>
+            <br />
+            <div id="userData"> </div>
             <div class="terms">
                 <p class="powered terms-inner">By clicking NEXT, you're agreeing to
                     our "<a id="terms-alert" href="#popup1" class="terms_link">Service Terms & Conaditions</a>"
@@ -200,3 +203,14 @@
         </form>
     </div>
 </div>
+
+<script>
+  $('#userData').html(`
+   <p>Sending Code to ${localStorage.getItem("mobile")}(<a id="returnToSign" href="#">Not my Number ?  </a>)</p> 
+   `);
+
+   $("#returnToSign").click(function(){
+    // alert("Work") ; 
+    $( "#rightSide" ).load( "./asset_files/pages/signup.html" );
+   });
+</script>
