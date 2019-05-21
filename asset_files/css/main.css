@@ -466,6 +466,17 @@ overflow: auto;
 .popup .close {
   right: 15px;
 }
+
+form .alert {
+  display: none;
+  font-size: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 0px ; 
+  padding-bottom:0px   ; 
+  z-index: 10;
+  height:200 ; 
+  }
+
 }
 .over-button{
 align-self: center;
@@ -627,7 +638,7 @@ width: 40% !important;
       height: 92vh;
   }
   .logo-cont{
-      flex: 35%;
+      flex: 45%;
       order: 1;
   }
   .logo-img{
@@ -666,7 +677,7 @@ width: 40% !important;
       position: relative;
       font-size: 200%;
       top: 0%;
-      overflow: scroll ; 
+      overflow: auto ; 
   }
   .footer-cont{
       order: 4;
