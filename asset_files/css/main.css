@@ -32,6 +32,18 @@
   font-family: Montserrat-Regular;
   src: url('../fonts/montserrat/Montserrat-Regular.ttf'); 
 }
+@font-face {
+  font-family: GabrielaStencil-Black;
+  src: url('../fonts/GabrielaStencil-Black.otf'); 
+}
+@font-face {
+  font-family: GabrielaStencil-Bold;
+  src: url('../fonts/GabrielaStencil-Bold.otf'); 
+}
+@font-face {
+  font-family: GabrielaStencil-Light;
+  src: url('../fonts/GabrielaStencil-Light.otf'); 
+}
 
 body {
   background-color: #20242c;
@@ -457,9 +469,12 @@ overflow: auto;
 }
 .over-button{
 align-self: center;
-font-family: Montserrat-SemiBold;
+font-family: GabrielaStencil-Black;
 color: #999999;
 font-size: 1.5vw;
+}
+.bold{
+  font-family: GabrielaStencil-Bold;
 }
 .separator {
 text-align: center;
