@@ -1,4 +1,6 @@
-<div class="logo test-mob">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+
     <div class="sub-form">
         <form action="" method="" class="form-val">
             <div class="wrap-input100">
@@ -6,8 +8,10 @@
             </div>
             
             <div class="signup">
-                <button class="btn btn-1" type="submit" name="Submit"
-                    onclick="window.location.href = '../../index.html';">Send Code</button>
+                <button class="btn btn-1" type="button" name="Submit"
+                data-loading-text="<i class='fa fa-spinner fa-spin fa-2x'></i>  Verifying Code..."
+                id = "verifyCode"
+                >NEXT</button>
             </div>
             <br />
             <div id="userData"> </div>
@@ -202,15 +206,48 @@
             <!-- pop up ends -->
         </form>
     </div>
-</div>
+
 
 <script>
-  $('#userData').html(`
-   <p>Sending Code to ${localStorage.getItem("mobile")}(<a id="returnToSign" href="#">Not my Number ?  </a>)</p> 
-   `);
 
-   $("#returnToSign").click(function(){
-    // alert("Work") ; 
-    $( "#rightSide" ).load( "./asset_files/pages/signup.html" );
-   });
-</script>
+       
+
+
+          
+            
+        
+           function retrurnToSign (){
+            // alert("Work") ; 
+            $( "#rightSide" ).load( "./asset_files/pages/signup.html" );
+           };
+
+           function resendCodeFun(){
+               alert("YA")
+                
+           }
+
+           $("#verifyCode").click(function(){
+            let code = $("#validation").val() ; 
+            let $this = $(this);
+            if (code){
+            $this.button('reset');
+            $this.button('loading');
+            $this.attr("disabled",true) ; 
+            // alert("pressed") ; 
+            }
+           
+           }) ; 
+
+           setTimeout(() => {
+                $('#userData').html(`
+        
+          <p class="text-center">
+              <a onclick="resendCodeFun()" href="#"> Resend code to ${localStorage.getItem("mobile")} </a>
+              <br>
+              ( <a id="returnToSign" href="#" onclick="retrurnToSign()">Not my Number ?  </a> )</p> 
+           `); 
+
+            }, 8000);
+
+          
+        </script>

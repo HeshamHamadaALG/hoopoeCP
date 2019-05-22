@@ -53,6 +53,11 @@
   url("./fonts/icofont.woff") format("woff");
 }
 
+/* Hoopoe Fonts */
+@font-face {
+  font-family: Avenir-Book ; 
+  src : url ('../fonts/Avenir/Avenir-Book.otf') ; 
+}
 body {
   background-color: #20242c;
   height: 100%;
@@ -133,7 +138,7 @@ display: flex;
 justify-content: center;
 align-items: center;
 padding: 0 20px;
-width: 100%;
+width: 65%;
 height: 50px;
 border-radius: 10px;
 background: #737270;
@@ -506,7 +511,7 @@ form .alert {
 }
 .over-button{
 align-self: center;
-font-family: GabrielaStencil-Black !important;
+font-family: Avenir-Book;
 color: #999999;
 font-size: 1.5vw;
 }
@@ -783,9 +788,12 @@ width: 40% !important;
       -o-animation-duration: 4s;
       animation-duration: 4s;
       position: relative;
-      font-size: 200%;
+      /* font-size: 200%; */
       top: 0%;
       overflow: auto; 
+  }
+  .test-mob p {
+
   }
   .footer-cont{
       order: 4;
@@ -1074,6 +1082,20 @@ form .alert {
 display: none;
 font-size: 1rem;
 margin-top: 2rem;
+margin-bottom: 0px ; 
+padding-bottom:0px   ; 
+}
+
+.intl-tel-input .selected-flag {
+  top : 15px ; 
 margin-bottom: 0px; 
 padding-bottom:0px; 
+}
+
+.btn.disabled, .btn:disabled {
+  cursor:auto;
+}
+.btn.disabled, .btn:disabled:hover{
+  /* opacity: 0.65; */
+  background: #737270 ; 
 }

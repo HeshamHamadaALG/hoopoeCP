@@ -22,7 +22,7 @@
 
 <script>
     // fetch("https://hoopoeapi.herokuapp.com/phone-macs/"+<?php echo $mac ?>)
-    fetch("http://localhost:3000/phone-macs/mac1")
+    fetch("http://192.168.1.178:3000/phone-macs/mac1")
     .then(function(response) {
         return response.json();
     })
@@ -37,11 +37,11 @@
             if(response.message==="User Not existed")
             {
                 // redirect to sign up button page 
-                window.location.href = "signUpButton.html?mac="+'mac2'
+                window.location.href = "welcome.html?mac="+'mac2'
             }
             else if (response.message==='User existed but not verified'){
                 // redirect to validation page 
-                window.location.href = "asset_files/pages/validation.html?mac="+'mac2'
+                window.location.href = "asset_files/pages/verfied.html?mac="+'mac2'
             }
             
         }

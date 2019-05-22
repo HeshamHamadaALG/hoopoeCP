@@ -1,5 +1,5 @@
 
-             
+             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
                     <div class="sub-form">
                           
                         <form action="" method="" class="login100-form" role="form">
@@ -28,7 +28,7 @@
 
                             <div class="signup">
                                 <button class="btn btn-1" type="submit" name="Submit"
-                                    id = "loadValidation">Send me Validation
+                                    id = "loadValidation" data-loading-text="<i class='fa fa-spinner fa-spin fa-2x'></i> Sending Code ...">Send me Validation
                                     SMS</button>
                             </div>
 
@@ -57,11 +57,14 @@
      
     </script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script>
         
         $("#loadValidation").click(function(e){
             
             e.preventDefault()  ; 
+            var $this = $(this);
+            
             let mobile = $("#mobile").val() ; 
             let age = $("#age").val() ; 
             let gender = $('input[name=sex]:checked').val(); 
@@ -84,13 +87,23 @@
                 $(".alert-danger").css({
                     display: 'block',
                 }) ; 
-                $(".alert-danger").html("<p> Sorry but age must be a number between 10 and 99") ;
+                $(".alert-danger").html("<p> Sorry but age must be a number between 10 and 99 </p>") ;
                         }
             else {
-                $( "#rightSide" ).load( "./asset_files/pages/validation.html");
                 localStorage.setItem("mobile",mobile) ;  
+                $this.button('reset');
+                $this.button('loading');
+                $this.attr("disabled",true) ; 
+                console.log("Preessed") ; 
+                
+                
+                setTimeout(function(){
+                   
+                $( "#rightSide" ).load( "./asset_files/pages/validation.html");
+                    } , 8000)
             }
         })
     
     </script>
+    
     <!-- <script src = "asset_files/js/plugin.js"> </script> -->
