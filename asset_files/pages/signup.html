@@ -1,3 +1,11 @@
+<script>
+    // var urlParams = new URLSearchParams(window.location.search);
+    // var mac = urlParams.get('mac');
+    var mac=localStorage.getItem("mac");
+    console.log(mac);
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
              <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
                     <div class="sub-form">
@@ -9,8 +17,8 @@
                                 <input id="mobile" class="input100 has-val" placeholder="Mobile" name="mobile" type="tel" size="18" required />
                                 <!-- <span class="focus-input100"></span>
                                 <span class="label-input100">Mobile</span> -->
-                                <!-- <label for="mobile" class="float-label">Mobile</label> -->
-                            </div>
+            <!-- <label for="mobile" class="float-label">Mobile</label> -->
+        </div>
 
                             <div class="radio">
                                 <div class="radio-inner">
@@ -19,10 +27,10 @@
                                 </div>
                             </div>
 
-                            <div class="wrap-input100">
-                                <input id="age" class="input100" name="age" type="number" size="14" min="10" max="99"
-                                    required placeholder="Age from  10-99" />
-                                <!-- <span class="focus-input100"></span>
+        <div class="wrap-input100">
+            <input id="age" class="input100" name="age" type="number" size="14" min="10" max="99" required
+                placeholder="Age from  10-99" />
+            <!-- <span class="focus-input100"></span>
                                 <span class="label-input100">Age</span> -->
                             </div>
 
@@ -44,66 +52,85 @@
         var input = document.querySelector("#mobile");
         window.intlTelInput(input, {
         initialCountry: "auto",
-        geoIpLookup: function(callback) {
-            $.get('https://ipinfo.io', function() {}, "jsonp").always(function(resp) {
-            var countryCode = (resp && resp.country) ? resp.country : "";
-            callback(countryCode);
+        geoIpLookup: function (callback) {
+            $.get('https://ipinfo.io', function () { }, "jsonp").always(function (resp) {
+                var countryCode = (resp && resp.country) ? resp.country : "";
+                callback(countryCode);
             });
         },
         utilsScript: "./phone_country_code/intl-tel-input-15.0.0/build/js/utils.js" // just for formatting/placeholders etc
-        });  
-        
+    });
 
-     
-    </script>
-
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script>
-        
-        $("#loadValidation").click(function(e){
-            
-            e.preventDefault()  ; 
-            var $this = $(this);
-            
-            let mobile = $("#mobile").val() ; 
-            let age = $("#age").val() ; 
-            let gender = $('input[name=sex]:checked').val(); 
+<script>
+    $("#loadValidation").click(function (e) {
 
-        
-            if (!(mobile && age && gender)){
+        e.preventDefault();
+        var $this = $(this);
+        let mobile = $("#mobile").val();
+        let age = $("#age").val();
+        let gender = $('input[name=sex]:checked').val();
 
-                $(".alert-danger").css({
-                    display: 'block',
-                }) ; 
-                $(".alert-danger").html("<p> Sorry but all Field must be filled") ;
-            }
-            else if(!$.isNumeric(mobile)){
-                $(".alert-danger").css({
-                    display: 'block',
-                }) ; 
-                $(".alert-danger").html("<p> Sorry but mobile must be a number") ;
-                        }
-                        else if(!$.isNumeric(age) || !(age > 10 && age < 99)){
-                $(".alert-danger").css({
-                    display: 'block',
-                }) ; 
-                $(".alert-danger").html("<p> Sorry but age must be a number between 10 and 99 </p>") ;
-                        }
-            else {
-                localStorage.setItem("mobile",mobile) ;  
-                $this.button('reset');
-                $this.button('loading');
-                $this.attr("disabled",true) ; 
-                console.log("Preessed") ; 
-                
-                
-                setTimeout(function(){
-                   
-                $( "#rightSide" ).load( "./asset_files/pages/validation.html");
-                    } , 8000)
-            }
-        })
-    
-    </script>
-    
-    <!-- <script src = "asset_files/js/plugin.js"> </script> -->
+
+        if (!(mobile && age && gender)) {
+
+            $(".alert-danger").css({
+                display: 'block',
+            });
+            $(".alert-danger").html("<p> Sorry but all Field must be filled");
+        }
+        else if (!$.isNumeric(mobile)) {
+            $(".alert-danger").css({
+                display: 'block',
+            });
+            $(".alert-danger").html("<p> Sorry but mobile must be a number");
+        }
+        else if (!$.isNumeric(age) || !(age > 10 && age < 99)) {
+            $(".alert-danger").css({
+                display: 'block',
+            });
+            $(".alert-danger").html("<p> Sorry but age must be a number between 10 and 99");
+        }
+        else {
+
+            $this.button('reset');
+            $this.button('loading');
+            $this.attr("disabled",true) ; 
+            fetch("http://localhost:3000/users", {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    "phone": mobile,
+                    "age": parseInt(age),
+                    "gender": gender,
+                    "mac": mac
+                })
+            })
+                .then((response) => {
+                    return response.json()
+                }).then((response) => {
+                    console.log(response);
+                    if (response.status === "success") {
+                        console.log('success');
+                        localStorage.setItem('phone',mobile);
+                        $( "#rightSide" ).load("./asset_files/pages/validation.html");  
+                    }
+                    else {
+                        console.log('fail');
+                        $(".alert-danger").css({
+                            display: 'block',
+                        });
+                        $(".alert-danger").html("<p>" + response.message + "</p>");
+
+                    }
+                })
+            // localStorage.setItem("mobile", mobile);
+        }
+    })
+
+</script>
+
+<!-- <script src = "asset_files/js/plugin.js"> </script> -->
