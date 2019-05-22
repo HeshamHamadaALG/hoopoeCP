@@ -235,7 +235,11 @@
             $this.attr("disabled",true) ; 
             // alert("pressed") ; 
             }
-           
+            setTimeout(()=>{   
+            $this.val('done') ; 
+            $this.attr("disabled",false) ; 
+
+            } , 8000 )
            }) ; 
 
            setTimeout(() => {
@@ -247,7 +251,7 @@
               ( <a id="returnToSign" href="#" onclick="retrurnToSign()">Not my Number ?  </a> )</p> 
            `); 
 
-            }, 8000);
+            }, 10000);
 
           
         </script>

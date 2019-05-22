@@ -77,11 +77,11 @@
                 }) ; 
                 $(".alert-danger").html("<p> Sorry but all Field must be filled") ;
             }
-            else if(!$.isNumeric(mobile)){
+            else if(!$.isNumeric(mobile) || !mobile.match('01[0125][0-9]{8}')){
                 $(".alert-danger").css({
                     display: 'block',
                 }) ; 
-                $(".alert-danger").html("<p> Sorry but mobile must be a number") ;
+                $(".alert-danger").html("<p> Sorry but mobile must be a valid phone number") ;
                         }
                         else if(!$.isNumeric(age) || !(age > 10 && age < 99)){
                 $(".alert-danger").css({
