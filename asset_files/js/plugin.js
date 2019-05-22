@@ -1,3 +1,4 @@
+
 $(document).ready(function(){
     console.log("Worked") ; 
     function test(name){
@@ -6,6 +7,8 @@ $(document).ready(function(){
     }
    $("#load-signup").click(function(){
     // alert("Work") ; 
-    $( "#rightSide" ).load( "./asset_files/pages/signup.html?mac="+mac);
+    // $( "#rightSide" ).load( "./asset_files/pages/signup.html?mac="+mac);
+    $( "#rightSide" ).load( "./asset_files/pages/signup.html");
+
    }); 
 })

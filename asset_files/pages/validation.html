@@ -1,9 +1,11 @@
 
 
  <script>
-    var urlParams = new URLSearchParams(window.location.search);
-    var mac=urlParams.get('mac');
-    var phone=urlParams.get('phone');
+    // var urlParams = new URLSearchParams(window.location.search);
+    // var mac=urlParams.get('mac');
+    // var phone=urlParams.get('phone');
+    var mac=localStorage.getItem("mac");
+    var phone=localStorage.getItem("phone");
 </script>
 
 <div class="logo test-mob">
@@ -214,47 +216,42 @@
 
 <script>
   $('#userData').html(`
-   <p>Sending Code to ${localStorage.getItem("mobile")}(<a id="returnToSign" href="#">Not my Number ?  </a>)</p> 
+   <p>Sending Code to ${localStorage.getItem("phone")}(<a id="returnToSign" href="#">Not my Number ?  </a>)</p> 
    `);
 
-   $("#returnToSign").click(function(){
-    // alert("Work") ; 
+   $("#returnToSign").click(function(){ 
     $( "#rightSide" ).load( "./asset_files/pages/signup.html" );
    });
 
    $("#Validate").click(function(e){
-       alert("AAAAAAAAAAAAAa")
        e.preventDefault();
     if ($("#validation").val()){
         console.log($("#validation").val())
         fetch("http://localhost:3000/users/validate" ,{
-                 method: 'POST',
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify({
-                            "code":$("#validation").val(),
-                            "mac":mac,
-                            "phone":phone,
-                            })
+            method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    "code":$("#validation").val(),
+                    "mac":mac,
+                    "phone":phone,
                     })
-                    .then((response) => {
-                        return response.json()        
-                    }).then((response)=>{
-                        console.log(response);
-                        if (response.status==="success"){
-                            console.log("Validation is ok")
-                            window.location.href = "ad.html?mac="+mac  
-                        }
-                        else{
-                            $(".alert-danger").css({
-                                display: 'block',
-                            }) ; 
-                            $(".alert-danger").html("<p>"+response.message+"</p>");
-
-                        }
-                    })
-           
+            })
+            .then((response) => {
+                return response.json()        
+            }).then((response)=>{
+                console.log(response);
+                if (response.status==="success"){
+                    window.location.href = "asset_files/pages/ad.html"
+                }
+                else{
+                    $(".alert-danger").css({
+                        display: 'block',
+                    }) ; 
+                    $(".alert-danger").html("<p>"+response.message+"</p>");
+                }
+            })
        }
    })
 </script>
