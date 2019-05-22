@@ -5,16 +5,15 @@
     console.log(mac);
 </script>
 
-
-<div class="sub-form">
-
-    <form action="" method="" class="login100-form" role="form">
-
-
-        <div class="wrap-input100">
-            <input id="mobile" class="input100 has-val" placeholder="Mobile" name="mobile" type="tel" size="18"
-                required />
-            <!-- <span class="focus-input100"></span>
+             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+                    <div class="sub-form">
+                          
+                        <form action="" method="" class="login100-form" role="form">
+                          
+                                
+                            <div class="wrap-input100">
+                                <input id="mobile" class="input100 has-val" placeholder="Mobile" name="mobile" type="tel" size="18" required />
+                                <!-- <span class="focus-input100"></span>
                                 <span class="label-input100">Mobile</span> -->
             <!-- <label for="mobile" class="float-label">Mobile</label> -->
         </div>
@@ -22,7 +21,7 @@
         <div class="radio">
             <div class="radio-inner">
                 <input type="radio" name="sex" value="Female" class="r-btn" data-icon='Female' />
-                <input type="radio" name="sex" value="Male" class="r-btn" data-icon=' Male ' />
+                <input type="r<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>adio" name="sex" value="Male" class="r-btn" data-icon=' Male ' />
             </div>
         </div>
 
@@ -31,26 +30,25 @@
                 placeholder="Age from  10-99" />
             <!-- <span class="focus-input100"></span>
                                 <span class="label-input100">Age</span> -->
-        </div>
+                            </div>
 
-        <div class="signup">
-            <button class="btn btn-1" type="submit" name="Submit" id="loadValidation">Send me Validation
-                SMS</button>
-        </div>
+                            <div class="signup">
+                                <button class="btn btn-1" type="submit" name="Submit"
+                                    id = "loadValidation" data-loading-text="<i class='fa fa-spinner fa-spin fa-2x'></i> Sending Code ...">Send me Validation
+                                    SMS</button>
+                            </div>
 
-        <div class="alert alert-danger" style="width: 100%" role="alert">
-            A simple danger alert—check it out!
-        </div>
-    </form>
+                            <div class="alert alert-danger" style = "width: 100%" role="alert">
+                                    A simple danger alert—check it out!
+                            </div>
+                        </form>
 
-</div>
-</div>
-
-<script src="./phone_country_code/intl-tel-input-15.0.0/build/js/intlTelInput.js"></script>
-
-<script>
-    var input = document.querySelector("#mobile");
-    window.intlTelInput(input, {
+                    </div>
+                </div>
+    <script src="./phone_country_code/intl-tel-input-15.0.0/build/js/intlTelInput.js"></script>
+    <script>
+        var input = document.querySelector("#mobile");
+        window.intlTelInput(input, {
         initialCountry: "auto",
         geoIpLookup: function (callback) {
             $.get('https://ipinfo.io', function () { }, "jsonp").always(function (resp) {
@@ -62,11 +60,12 @@
     });
 
 </script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script>
     $("#loadValidation").click(function (e) {
 
         e.preventDefault();
+        var $this = $(this);
         let mobile = $("#mobile").val();
         let age = $("#age").val();
         let gender = $('input[name=sex]:checked').val();
@@ -93,6 +92,9 @@
         }
         else {
 
+            $this.button('reset');
+            $this.button('loading');
+            $this.attr("disabled",true) ; 
             fetch("http://localhost:3000/users", {
                 method: 'POST',
                 headers: {
@@ -128,4 +130,5 @@
     })
 
 </script>
+
 <!-- <script src = "asset_files/js/plugin.js"> </script> -->

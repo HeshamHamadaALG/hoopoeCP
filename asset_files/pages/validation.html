@@ -9,6 +9,9 @@
 </script>
 
 <div class="logo test-mob">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+
     <div class="sub-form">
         <form action="" method="" class="form-val">
             <div class="wrap-input100">
@@ -16,8 +19,9 @@
             </div>
             
             <div class="signup">
-                <button class="btn btn-1" type="button" name="Submit"
-                    id="Validate">Send Code</button>
+                <button class="btn btn-1" type="button" name="Submit" 
+                data-loading-text="<i class='fa fa-spinner fa-spin fa-2x'></i>  Verifying Code..."
+                    id="Validate">Next</button>
             </div>
             <br />
             <div id="userData"> </div>
@@ -212,12 +216,21 @@
             <!-- pop up ends -->
         </form>
     </div>
-</div>
+
 
 <script>
   $('#userData').html(`
    <p>Sending Code to ${localStorage.getItem("phone")}(<a id="returnToSign" href="#">Not my Number ?  </a>)</p> 
    `);
+
+   function retrurnToSign (){
+            // alert("Work") ; 
+            $( "#rightSide" ).load( "./asset_files/pages/signup.html" );
+           };
+    function resendCodeFun(){
+            alert("YA")
+        }
+
 
    $("#returnToSign").click(function(){ 
     $( "#rightSide" ).load( "./asset_files/pages/signup.html" );
@@ -226,7 +239,25 @@
    $("#Validate").click(function(e){
        e.preventDefault();
     if ($("#validation").val()){
-        console.log($("#validation").val())
+        // let code data-loading-text="<i class='fa fa-spinner fa-spin fa-2x'></i>  Verifying Code..."= $("#validation").val() ; 
+            let $this = $(this);
+            $this.button('reset');
+            $this.button('loading');
+            $this.attr("disabled",true) ; 
+            
+            setTimeout(() => {
+                $('#userData').html(`
+        
+                    <p class="text-center"><a onclick="resendCodeFun()" href="#"> Resend code to ${localStorage.getItem("mobile")} </a>
+                    <br>
+                    ( <a id="returnToSign" href="#" onclick="retrurnToSign()">Not my Number ?  </a> )</p> 
+           `); 
+
+            }, 8000);
+
+
+
+
         fetch("http://localhost:3000/users/validate" ,{
             method: 'POST',
                 headers: {
