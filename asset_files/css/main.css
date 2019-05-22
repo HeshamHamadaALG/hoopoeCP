@@ -967,6 +967,9 @@ font-size: 3vw;
       -moz-animation: cover-form 4s;
       -o-animation: cover-form 4s;
       animation: cover-form 4s;
+      -webkit-align-self: flex-end;
+      -ms-flex-item-align: end;
+      align-self: flex-end;
   }
   .logo-img{
       -webkit-animation: logo 3s;
