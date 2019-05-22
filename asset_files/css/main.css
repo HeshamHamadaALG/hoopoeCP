@@ -1047,3 +1047,11 @@ padding-bottom:0px   ;
 margin-bottom: 0px; 
 padding-bottom:0px; 
 }
+
+.btn.disabled, .btn:disabled {
+  cursor:auto;
+}
+.btn.disabled, .btn:disabled:hover{
+  /* opacity: 0.65; */
+  background: #737270 ; 
+}

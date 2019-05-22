@@ -28,7 +28,7 @@
 
                             <div class="signup">
                                 <button class="btn btn-1" type="submit" name="Submit"
-                                    id = "loadValidation" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Sending Code ...">Send me Validation
+                                    id = "loadValidation" data-loading-text="<i class='fa fa-spinner fa-spin fa-2x'></i> Sending Code ...">Send me Validation
                                     SMS</button>
                             </div>
 
@@ -93,7 +93,9 @@
                 localStorage.setItem("mobile",mobile) ;  
                 $this.button('reset');
                 $this.button('loading');
-                $this.attr('disabled',true) ; 
+                $this.attr("disabled",true) ; 
+                console.log("Preessed") ; 
+                
                 
                 setTimeout(function(){
                    
