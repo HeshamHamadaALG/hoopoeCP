@@ -1053,21 +1053,25 @@ font-size: 3vw;
           width: 40%;
           height: 100%;
           float: right;
+          margin-right: auto;
       }
       16% {
           width: 40%;
           height: 100%;
           float: right;
+          margin-right: auto;
       }
       32% {
           width: 40%;
           height: 100%;
           float: right;
+          margin-right: auto;
       }
       100% {
           width: 0%;
           height: 100%;
           float: right;
+          margin-right: auto;
       }
 
     }
