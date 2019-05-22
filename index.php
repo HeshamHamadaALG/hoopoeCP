@@ -1,5 +1,5 @@
 <?php
-    $mac= $_POST['mac']
+$mac = $_POST['mac']
 ?>
 
 <!DOCTYPE html>
@@ -7,7 +7,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content= "width=device-width, user-scalable=no">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>HOOPOE WiFi</title>
     <link rel="stylesheet" href="./asset_files/css/bootstrap.min.css">
@@ -57,16 +57,10 @@
     <script src="./asset_files/js/jquery-3.4.1.min.js"></script>
 
     <script src="./asset_files/js/plugin.js"></script>
+    <script>
+        var box = document.getElementById('full-box');
+        var height = box.offsetHeight;
+        box.setAttribute("style", `height: ${height}px !important;`);
+        console.log(height);
+    </script>
 </body>
-
-
-
-
-
-
-
-
-
-
-
-
