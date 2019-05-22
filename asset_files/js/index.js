@@ -1,7 +1,7 @@
 // fetch("https://hoopoeapi.herokuapp.com/phone-macs/"+<?php echo $mac ?>)
 
 
-mac='mac3';
+mac='mac2';
 localStorage.setItem('mac',mac);
 
 fetch("http://localhost:3000/phone-macs/"+mac)
@@ -25,7 +25,7 @@ fetch("http://localhost:3000/phone-macs/"+mac)
         else if (response.message==='User existed but not verified'){
             // redirect to validation page 
             // window.location.href = "asset_files/pages/validation.html?mac="+mac
-            window.location.href = "asset_files/pages/validation.html"
+            window.location.href = "asset_files/pages/welcome.html"
         }
         
     }
