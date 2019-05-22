@@ -44,6 +44,15 @@
   font-family: GabrielaStencil-Light;
   src: url('../fonts/GabrielaStencil-Light.otf'); 
 }
+@font-face
+{
+  font-family: "IcoFont";
+  font-weight: normal;
+  font-style: "Regular";
+  src: url("../fonts/icofont.woff2") format("woff2"), url("../fonts/icofont.woff") format("woff"),
+  url("../fonts/icofont.eot") format("embedded-opentype"), url("../fonts/icofont.ttf") format("truetype"), 
+  url("../fonts/icofont.svg") format("svg");
+}
 
 /* Hoopoe Fonts */
 @font-face {
@@ -503,7 +512,6 @@ form .alert {
 }
 .over-button{
 align-self: center;
-/* font-family: Montserrat-SemiBold; */
 font-family: Avenir-Book;
 color: #999999;
 font-size: 1.5vw;
@@ -545,11 +553,22 @@ input[name="sex"] {
   outline: none;
 }
 input[name="sex"]:after {
-  font-family: Montserrat-SemiBold;
+  /* font-family: Montserrat-SemiBold; */
+  font-family: 'IcoFont' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  line-height: 1;
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
   display: inline-block;
   text-align: center;
   /* font-size: 100%; */
-  content: attr(data-icon);
   padding: 15px 15px;
   margin-top: 5px;
   margin-bottom: 10px;
@@ -561,6 +580,32 @@ input[name="sex"]:after {
   transition: box-shadow 1s, color 1s;
   z-index: 103;
   background-color: #999999;
+}
+input[value="m"]:after {
+  content: "\ed03";
+  /* content: " Male "; */
+}
+input[value="f"]:after {
+  content: "\ed02";
+  /* content: "Female"; */
+}
+input[value="m"]:hover:after {
+  content: " Male ";
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.6);
+  -webkit-transition: color 0.5s;
+  -moz-transition: color 0.5s;
+  -o-transition: color 0.5s;
+  transition: color 0.5s;
+}
+input[value="f"]:hover:after {
+  content: "Female";
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.6);
+  -webkit-transition: color 0.5s;
+  -moz-transition: color 0.5s;
+  -o-transition: color 0.5s;
+  transition: color 0.5s;
 }
 input[name="sex"]:checked:after {
   box-shadow: 2px 2px 14px rgba(0, 0, 0, 0.4);
@@ -732,6 +777,8 @@ width: 40% !important;
       -o-animation: cover-form-mob 4s; 
       animation: cover-form-mob 4s;
       height: 0%;
+      -webkit-align-self: flex-end;
+      -ms-flex-item-align: end;
       align-self: flex-end;
   }
   .test-mob {
