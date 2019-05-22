@@ -777,6 +777,8 @@ width: 40% !important;
       -o-animation: cover-form-mob 4s; 
       animation: cover-form-mob 4s;
       height: 0%;
+      -webkit-align-self: flex-end;
+      -ms-flex-item-align: end;
       align-self: flex-end;
   }
   .test-mob {
