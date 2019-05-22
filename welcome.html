@@ -12,6 +12,11 @@
     <link href="./asset_files/css/main.css" rel="stylesheet">
 </head>
 
+<script>
+        var urlParams = new URLSearchParams(window.location.search);
+        var mac=urlParams.get('mac');
+</script>
+
 <body>
     <div id="particles-js" class="particles-css">
         <canvas class="particles-js-canvas-el" width="1889" height="947" style="width: 100%;height: 100%;">
@@ -61,6 +66,8 @@
     box.setAttribute("style", `height: ${height}px !important;`);
     console.log(height);
 </script>
+
+
 
 
 

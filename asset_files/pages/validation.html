@@ -1,3 +1,11 @@
+
+
+ <script>
+    var urlParams = new URLSearchParams(window.location.search);
+    var mac=urlParams.get('mac');
+    var phone=urlParams.get('phone');
+</script>
+
 <div class="logo test-mob">
     <div class="sub-form">
         <form action="" method="" class="form-val">
@@ -6,8 +14,8 @@
             </div>
             
             <div class="signup">
-                <button class="btn btn-1" type="submit" name="Submit"
-                    onclick="window.location.href = '../../index.html';">Send Code</button>
+                <button class="btn btn-1" type="button" name="Submit"
+                    id="Validate">Send Code</button>
             </div>
             <br />
             <div id="userData"> </div>
@@ -213,4 +221,40 @@
     // alert("Work") ; 
     $( "#rightSide" ).load( "./asset_files/pages/signup.html" );
    });
+
+   $("#Validate").click(function(e){
+       alert("AAAAAAAAAAAAAa")
+       e.preventDefault();
+    if ($("#validation").val()){
+        console.log($("#validation").val())
+        fetch("http://localhost:3000/users/validate" ,{
+                 method: 'POST',
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                            "code":$("#validation").val(),
+                            "mac":mac,
+                            "phone":phone,
+                            })
+                    })
+                    .then((response) => {
+                        return response.json()        
+                    }).then((response)=>{
+                        console.log(response);
+                        if (response.status==="success"){
+                            console.log("Validation is ok")
+                            window.location.href = "ad.html?mac="+mac  
+                        }
+                        else{
+                            $(".alert-danger").css({
+                                display: 'block',
+                            }) ; 
+                            $(".alert-danger").html("<p>"+response.message+"</p>");
+
+                        }
+                    })
+           
+       }
+   })
 </script>

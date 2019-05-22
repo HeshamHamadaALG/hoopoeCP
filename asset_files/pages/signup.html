@@ -1,5 +1,7 @@
-
-             
+             <script>
+                var urlParams = new URLSearchParams(window.location.search);
+                var mac=urlParams.get('mac');
+             </script>
                     <div class="sub-form">
                           
                         <form action="" method="" class="login100-form" role="form">
@@ -14,8 +16,8 @@
 
                             <div class="radio">
                                 <div class="radio-inner">
-                                    <input type="radio" name="sex" value="f" class="r-btn" data-icon='Female' />
-                                    <input type="radio" name="sex" value="m" class="r-btn" data-icon=' Male ' />
+                                    <input type="radio" name="sex" value="Female" class="r-btn" data-icon='Female' />
+                                    <input type="radio" name="sex" value="Male" class="r-btn" data-icon=' Male ' />
                                 </div>
                             </div>
 
@@ -87,7 +89,44 @@
                 $(".alert-danger").html("<p> Sorry but age must be a number between 10 and 99") ;
                         }
             else {
-                $( "#rightSide" ).load( "./asset_files/pages/validation.html");
+
+                fetch("http://localhost:3000/users" ,{
+                 method: 'POST',
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                            "phone": mobile,
+                            "age":parseInt(age),
+                            "gender":gender,
+                            "mac":mac
+                            })
+                    })
+                    .then((response) => {
+                        return response.json()        
+                    }).then((response)=>{
+                        console.log(response);
+                        if (response.status==="success"){
+                            console.log('success');
+                            // URLSearchParams.append("phone", mobile);
+                            // $( "#rightSide" ).load("./asset_files/pages/validation.html?mac="+encodeURIComponent(mac)+"&phone="+encodeURIComponent(mobile));  
+                            window.location.href="./asset_files/pages/validation.html?mac="+mac+"&phone="+mobile; 
+                        }
+                        else{
+                            console.log('fail');
+
+                            $(".alert-danger").css({
+                                display: 'block',
+                            }) ; 
+                            $(".alert-danger").html("<p>"+response.message+"</p>");
+
+                        }
+                    })
+
+
+
+
+                
                 localStorage.setItem("mobile",mobile) ;  
             }
         })
