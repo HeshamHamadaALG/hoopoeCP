@@ -972,6 +972,9 @@ font-size: 3vw;
       -webkit-align-self: flex-end;
       -ms-flex-item-align: end;
       align-self: flex-end;
+      float: right;
+      margin-right: auto;
+      opacity: 1;
   }
   .logo-img{
       -webkit-animation: logo 3s;
