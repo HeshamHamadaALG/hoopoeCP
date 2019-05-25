@@ -1,66 +1,52 @@
-<?php
-$mac = $_POST['mac']
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta name="viewport" content= "width=device-width, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>HOOPOE WiFi</title>
-    <link rel="stylesheet" href="./asset_files/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./phone_country_code/intl-tel-input-15.0.0/build/css/intlTelInput.css">
-
-    <link href="./asset_files/css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="landingPage.css">
 </head>
 
 <body>
-    <div id="particles-js" class="particles-css">
-        <canvas class="particles-js-canvas-el" width="1889" height="947" style="width: 100%;height: 100%;">
-        </canvas>
-    </div>
-    <div class="contain">
-        <div class="full-box" id="full-box">
-            <div class="logo-cont">
-                <div class="logo">
-                    <div class="logo-cover"></div>
-                    <img class="logo-img" src="./asset_files/imgs/basic.png" alt="Hoopoe Logo">
-                </div>
-            </div>
-            <div class="line-cont"></div>
-            <div class="form-cont">
-                <div class="form-cover"></div>
-                <div class="logo test-mob" id="rightSide">
-                    <div class="form">
-                        <div class="signup">
-                            <div style="text-align: center;">
-                                <h2 class="over-button">Completely for Free, Unlimited Speed, Unlimited Time</h2>
-                            </div>
-                            <button class="btn btn-1" id="load-signup" type="submit" name="Submit">SignUp</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-cont">
-                <div>
-                    <p class="powered">Powered by <a target="_blank" href="http://hoopoe.digital/"> <strong class="bold">HOOPOE DIGITAL </strong></a></p>
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <script src="./asset_files/js/particles.min.js"></script>
-    <script src="./asset_files/js/main.js"></script>
-    <!-- <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script> -->
-    <script src="./asset_files/js/jquery-3.4.1.min.js"></script>
-
-    <script src="./asset_files/js/plugin.js"></script>
-    <script>
-        var box = document.getElementById('full-box');
-        var height = box.offsetHeight;
-        box.setAttribute("style", `height: ${height}px !important;`);
-        console.log(height);
-    </script>
+    <div class="loader">
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__ball"></div>
+    </div>   
 </body>
+
+<script src="asset_files/js/index.js"></script>
+<script>
+    // fetch("https://hoopoeapi.herokuapp.com/phone-macs/"+<?php echo $mac ?>)
+    fetch("https://hoopoeapi.herokuapp.com/phone-macs/"+mac)
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(response) {
+        if (response.verified)
+            {
+                // redirect to ads page 
+                window.location.href = "asset_files/pages/ad.html"
+                console.log('verified');
+            }
+        else {
+            if(response.message==="User Not existed")
+            {
+                // redirect to sign up button page 
+                window.location.href = "welcome.html"
+            }
+            else if (response.message==='User existed but not verified'){
+                // redirect to validation page 
+                window.location.href = "welcome.html"
+            }
+            
+        }
+    })
+
+
+</script>
