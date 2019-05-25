@@ -29,14 +29,14 @@
 
         <div class="wrap-input100">
             <input id="age" class="input100 has-val" name="age" type="number" size="14" min="10" max="99" required
-                placeholder="Age from  10-99" />
+                placeholder="AGE" />
             <!-- <span class="focus-input100"></span>
                                 <span class="label-input100">Age</span> -->
                             </div>
 
                             <div class="signup">
                                 <button class="btn btn-1" type="submit" name="Submit"
-                                    id = "loadValidation" data-loading-text="<i class='fa fa-spinner fa-spin fa-2x'></i> Sending Code ...">Send me Validation
+                                    id = "loadValidation" data-loading-text="<i class='fa fa-spinner fa-spin fa-2x'></i>  Sending Code ...">Send me Validation
                                     SMS</button>
                             </div>
 
@@ -55,7 +55,7 @@
         geoIpLookup: function (callback) {
             $.get('https://ipinfo.io', function () { }, "jsonp").always(function (resp) {
                 var countryCode = (resp && resp.country) ? resp.country : "";
-                console.log(countryCode , 'f')
+                console.log(resp , 'm',resp.country, 'f')
                 callback(countryCode);
             });
         },
