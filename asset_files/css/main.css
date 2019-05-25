@@ -267,7 +267,7 @@ margin: 0;
 
 .input100 {
   display: block;
-  width: 100%;
+  width: 80%;
   background: transparent;
   font-family: Montserrat-Regular;
   font-size: 18px;
@@ -275,6 +275,13 @@ margin: 0;
   line-height: 1.2;
   padding: 0 6px 0px 52px;
   margin: auto;
+}
+#mobile{
+  margin-left: 9%;
+}
+
+.iti-flag{
+  margin-left: 22px;
 }
 
 input.input100 {
@@ -565,7 +572,8 @@ text-align: center;
 }
 
 .radio-inner{
-margin: auto;
+  margin: auto;
+  margin-top: 5px;
 }
 .radio-inner input {
   margin-left: 10px;
@@ -612,12 +620,12 @@ input[name="sex"]:after {
   background-color: #999999;
 }
 input[value="m"]:after {
-  content: "\ed03";
-  /* content: " Male "; */
+  /* content: "\ed03"; */
+  content: " Male ";
 }
 input[value="f"]:after {
-  content: "\ed02";
-  /* content: "Female"; */
+  /* content: "\ed02"; */
+  content: "Female";
 }
 input[value="m"]:hover:after {
   content: " Male ";
@@ -1156,4 +1164,11 @@ padding-bottom:0px;
 .btn.disabled, .btn:disabled:hover{
   /* opacity: 0.65; */
   background: #737270 ; 
+}
+
+.btn-1:hover{
+  background-color: #e7a15e;
+}
+#loadValidation{
+  width: 80%;
 }
