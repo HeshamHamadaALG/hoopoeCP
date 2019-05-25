@@ -14,7 +14,7 @@
                           
                                 
                             <div class="wrap-input100">
-                                <input id="mobile" class="input100 has-val" placeholder="Mobile" name="mobile" type="tel" size="18" required />
+                                <input id="mobile" class="input100 has-val" name="mobile" type="tel" size="18" required />
                                 <!-- <span class="focus-input100"></span>
                                 <span class="label-input100">Mobile</span> -->
             <!-- <label for="mobile" class="float-label">Mobile</label> -->
@@ -53,10 +53,13 @@
         window.intlTelInput(input, {
         initialCountry: "auto",
         geoIpLookup: function (callback) {
-            $.get('https://ipinfo.io', function () { }, "jsonp").always(function (resp) {
+            $.get('https://ipinfo.io', function () { }, "jsonp").then(function (resp) {
                 var countryCode = (resp && resp.country) ? resp.country : "";
-                console.log(resp , 'm',resp.country, 'f')
                 callback(countryCode);
+            }).then( (resp)=>{
+                let title = document.getElementsByClassName('selected-flag')[0].title;
+                let code = title.split(":")[1].slice(1);
+                console.log(code)
             });
         },
         utilsScript: "./phone_country_code/intl-tel-input-15.0.0/build/js/utils.js" // just for formatting/placeholders etc
