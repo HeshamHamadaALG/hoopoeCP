@@ -584,12 +584,12 @@ input[name="sex"]:after {
   background-color: #999999;
 }
 input[value="m"]:after {
-  content: "\ed03";
-  /* content: " Male "; */
+  /* content: "\ed03"; */
+  content: " Male ";
 }
 input[value="f"]:after {
-  content: "\ed02";
-  /* content: "Female"; */
+  /* content: "\ed02"; */
+  content: "Female";
 }
 input[value="m"]:hover:after {
   content: " Male ";
