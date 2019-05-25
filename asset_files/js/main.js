@@ -113,24 +113,7 @@ particlesJS("particles-js", {
 /*==================================================================
     [ Focus Contact2 ]*/
 
-
-    var input = document.getElementById('mobile')
-    var age = document.getElementById('age')
     var validation = document.getElementById('validation')
-    input.addEventListener("blur", function focus(){
-      if (input.value !== ""){
-          input.classList.add('has-val');
-      } else {
-        input.classList.remove('has-val');
-      }
-    });
-    age.addEventListener("blur", function focus(){
-      if (age.value !== ""){
-          age.classList.add('has-val');
-      } else {
-        age.classList.remove('has-val');
-      }
-    });
     validation.addEventListener("blur", function focus(){
       if (validation.value !== ""){
           validation.classList.add('has-val');

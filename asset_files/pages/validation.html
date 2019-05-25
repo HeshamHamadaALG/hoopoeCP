@@ -1,3 +1,14 @@
+
+
+ <script>
+    // var urlParams = new URLSearchParams(window.location.search);
+    // var mac=urlParams.get('mac');
+    // var phone=urlParams.get('phone');
+    var mac=localStorage.getItem("mac");
+    var phone=localStorage.getItem("phone");
+</script>
+
+<div class="logo test-mob">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 
@@ -8,10 +19,9 @@
             </div>
             
             <div class="signup">
-                <button class="btn btn-1" type="button" name="Submit"
+                <button class="btn btn-1" type="button" name="Submit" 
                 data-loading-text="<i class='fa fa-spinner fa-spin fa-2x'></i>  Verifying Code..."
-                id = "verifyCode"
-                >NEXT</button>
+                    id="Validate">Next</button>
             </div>
             <br />
             <div id="userData"> </div>
@@ -204,36 +214,75 @@
                 </div>
             </div>
             <!-- pop up ends -->
+            <div class="alert alert-danger" style = "width: 100%" role="alert">
+                    A simple danger alert—check it out!
+            </div>
         </form>
     </div>
 
 
 <script>
+    $(document).ready(function(){
 
-       
+        let nextPressed = false ; 
+//   $('#userData').html(`
+//    <p>Sending Code to ${localStorage.getItem("phone")}(<a id="returnToSign" href="#">Not my Number ?  </a>)</p> 
+//    `);
 
-
-          
-            
-        
-           function retrurnToSign (){
+   function retrurnToSign (){
             // alert("Work") ; 
             $( "#rightSide" ).load( "./asset_files/pages/signup.html" );
            };
+    function resendCodeFun(){
+            alert("YA")
+        }
 
-           function resendCodeFun(){
-               alert("YA")
-                
-           }
 
-           $("#verifyCode").click(function(){
-            let code = $("#validation").val() ; 
+   $("#returnToSign").click(function(){ 
+    $( "#rightSide" ).load( "./asset_files/pages/signup.html" );
+   });
+
+   $("#Validate").click(function(e){
+       e.preventDefault();
+    if ($("#validation").val()){
+        // let code data-loading-text="<i class='fa fa-spinner fa-spin fa-2x'></i>  Verifying Code..."= $("#validation").val() ; 
+            nextPressed = true ; 
             let $this = $(this);
-            if (code){
             $this.button('reset');
             $this.button('loading');
             $this.attr("disabled",true) ; 
             // alert("pressed") ; 
+
+            fetch("http://hoopoeapi.herokuapp.com/users/validate" ,{
+            method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    "code":$("#validation").val(),
+                    "mac":mac,
+                    "phone":phone,
+                    })
+            })
+            .then((response) => {
+                return response.json()        
+            }).then((response)=>{
+                console.log(response);
+                if (response.status==="success"){
+                    window.location.href = "asset_files/pages/ad.html"
+                }
+                else{
+                    $("#Validate").button("reset") ; 
+                    $("#Validate").attr("disabled", false) ; 
+                    $(".alert-danger").css({
+                        display: 'block',
+                    }) ; 
+                    $(".alert-danger").html("<p>"+response.message+"</p>");
+                }
+            })
+            
+            } else {
+                $(".alert-danger").html("<p> Sorry but all Field must be filled");
             }
             setTimeout(()=>{   
             $this.val('done') ; 
@@ -243,15 +292,19 @@
            }) ; 
 
            setTimeout(() => {
+               if (!nextPressed){
                 $('#userData').html(`
         
-          <p class="text-center">
-              <a onclick="resendCodeFun()" href="#"> Resend code to ${localStorage.getItem("mobile")} </a>
-              <br>
-              ( <a id="returnToSign" href="#" onclick="retrurnToSign()">Not my Number ?  </a> )</p> 
+                    <p class="text-center"><a onclick="resendCodeFun()" href="#"> Resend code to ${localStorage.getItem("mobile")} </a>
+                    <br>
+                    ( <a id="returnToSign" href="#" onclick="retrurnToSign()">Not my Number ?  </a> )</p> 
            `); 
-
+                    }
             }, 10000);
 
-          
-        </script>
+
+
+
+     
+       })
+</script>

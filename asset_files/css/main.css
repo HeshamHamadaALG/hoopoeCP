@@ -49,8 +49,9 @@
   font-family: "IcoFont";
   font-weight: normal;
   font-style: "Regular";
-  src: url("./fonts/icofont.woff2") format("woff2"),
-  url("./fonts/icofont.woff") format("woff");
+  src: url("../fonts/icofont.woff2") format("woff2"), url("../fonts/icofont.woff") format("woff"),
+  url("../fonts/icofont.eot") format("embedded-opentype"), url("../fonts/icofont.ttf") format("truetype"), 
+  url("../fonts/icofont.svg") format("svg");
 }
 
 /* Hoopoe Fonts */
@@ -95,6 +96,8 @@ body {
 
 .line-cont{
   background-color: #20242c;
+  /* background-color: #eee; */
+
   border-radius: 10px;
   opacity: 0.6;
 }
@@ -232,14 +235,16 @@ margin: 0;
   flex-wrap: wrap;
   align-items: flex-end;
   width: 100%;
-  height: 80px;
+  /* height: 80px; */
   position: relative;
-  border: 1px solid #e6e6e6;
+  /* border: 1px solid #e6e6e6; */
   border-radius: 10px;
   margin-bottom: 10px;
   
 }
-
+.intl-tel-input {
+  width: 100%;
+}
 .label-input100 {
   font-family: Montserrat-Regular;
   font-size: 18px;
@@ -268,7 +273,7 @@ margin: 0;
   font-size: 18px;
   color: #555555;
   line-height: 1.2;
-  padding: 0 26px;
+  padding: 0 6px 0px 52px;
   margin: auto;
 }
 
@@ -482,6 +487,31 @@ overflow: auto;
 }
 
 @media screen and (max-width: 700px){
+
+
+  input:focus::-webkit-input-placeholder { color:transparent; }
+input:focus:-moz-placeholder { color:transparent; }
+input:focus::-moz-placeholder { color:transparent; }
+input:focus:-ms-input-placeholder { color:transparent; }
+
+textarea:focus::-webkit-input-placeholder { color:transparent; }
+textarea:focus:-moz-placeholder { color:transparent; }
+textarea:focus::-moz-placeholder { color:transparent; }
+textarea:focus:-ms-input-placeholder { color:transparent; }
+
+input::-webkit-input-placeholder { color: #eee;}
+input:-moz-placeholder { color: #eee;}
+input::-moz-placeholder { color: #eee;}
+input:-ms-input-placeholder { color: #eee;}
+
+textarea::-webkit-input-placeholder { color: #eee;}
+textarea:-moz-placeholder { color: #eee;}
+textarea::-moz-placeholder { color: #eee;}
+textarea:-ms-input-placeholder { color: #eee;}
+
+input{
+  color : #eee
+}
 .box{
   width: 70%;
 }
@@ -513,6 +543,7 @@ form .alert {
 align-self: center;
 font-family: Avenir-Book;
 color: #999999;
+/* color : #eee ;  */
 font-size: 1.5vw;
 }
 .bold{
@@ -530,7 +561,7 @@ text-align: center;
   display: -moz-box;
   display: -ms-flexbox;
   display: flex;
-  margin-top:2rem ; 
+  margin-top: 13%;
 }
 
 .radio-inner{
@@ -706,8 +737,15 @@ width: 40% !important;
 }
 } */
 @media all and (max-width: 800px) {
+  .over-button{
+    color : #eee
+  }
+
+  .input100 {
+   color : #eee  
+  }
   .full-box {
-      margin: 4% 2%;
+      margin: 4% 4%;
       -webkit-box-flex: 1 0 0;
       -moz-box-flex: 1 0 0;
       -ms-flex: 1 0 0;
@@ -717,6 +755,7 @@ width: 40% !important;
       -ms-flex-direction: column;
       flex-direction: column;
       height: 92vh;
+      background-color: rgba(231,227,224,0.2)
   }
   .logo-cont{
       -webkit-box-flex: 45%;
@@ -751,6 +790,8 @@ width: 40% !important;
       position: relative;
       z-index: 100;
       order: 2;
+      background-color:#eee ; 
+    
   }
   .form-cont{
       -webkit-box-flex: 65%;
@@ -769,6 +810,7 @@ width: 40% !important;
   }
   .form-cover {
       background-color: #E7E3E0;
+      /* background-color: rgba(231,227,224,0.2)  ;  */
       z-index: 99 !important;
       position: relative;
       -webkit-animation: cover-form-mob 4s;
@@ -776,6 +818,8 @@ width: 40% !important;
       -o-animation: cover-form-mob 4s; 
       animation: cover-form-mob 4s;
       height: 0%;
+      -webkit-align-self: flex-end;
+      -ms-flex-item-align: end;
       align-self: flex-end;
   }
   .test-mob {
@@ -802,7 +846,8 @@ width: 40% !important;
       -ms-flex: 2%;
       flex: 2%;
       z-index: 101;
-      background-color: #E7E3E0;
+      /* background-color: #E7E3E0; */
+      background-color: rgba(231,227,224,0.2) ; 
       display: -webkit-box;
       display: -webkit-flex;
       display: -moz-box;
@@ -857,6 +902,7 @@ font-size: 3vw;
         @keyframes cover-form-mob {
           0% {
               background-color: #E7E3E0;
+              /* background-color: rgba(231,227,224,0.4) ;  */
               -webkit-box-flex: 70%;
               -moz-box-flex: 70%;
               -ms-flex: 70%;
@@ -866,6 +912,7 @@ font-size: 3vw;
           }
           16% {
               background-color: #E7E3E0;
+              /* background-color: rgba(231,227,224,0.4) ;  */
               -webkit-box-flex: 70%;
               -moz-box-flex: 70%;
               -ms-flex: 70%;
@@ -875,6 +922,7 @@ font-size: 3vw;
           }
           32% {
               background-color: #E7E3E0;
+              /* background-color: rgba(231,227,224,0.4) ;  */
               -webkit-box-flex: 70%;
               -moz-box-flex: 70%;
               -ms-flex: 70%;
@@ -964,6 +1012,12 @@ font-size: 3vw;
       -moz-animation: cover-form 4s;
       -o-animation: cover-form 4s;
       animation: cover-form 4s;
+      -webkit-align-self: flex-end;
+      -ms-flex-item-align: end;
+      align-self: flex-end;
+      float: right;
+      margin-right: auto;
+      opacity: 1;
   }
   .logo-img{
       -webkit-animation: logo 3s;
@@ -1027,10 +1081,10 @@ font-size: 3vw;
 
     @keyframes logo {
         0% {
-          left: 140%;
+          left: 140vw;
         }
         25% {
-          left: 140%;
+          left: 140vw;
         }
         50% {
           left: 80%;
@@ -1045,21 +1099,25 @@ font-size: 3vw;
           width: 40%;
           height: 100%;
           float: right;
+          margin-right: auto;
       }
       16% {
           width: 40%;
           height: 100%;
           float: right;
+          margin-right: auto;
       }
       32% {
           width: 40%;
           height: 100%;
           float: right;
+          margin-right: auto;
       }
       100% {
           width: 0%;
           height: 100%;
           float: right;
+          margin-right: auto;
       }
 
     }
