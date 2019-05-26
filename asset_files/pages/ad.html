@@ -2,6 +2,20 @@
 <html>
 
 <head>
+    <!-- Google Tag Manager -->
+    <script>
+        // using IIFE (Immediately Invokable Function Expression).
+        (function(w,d,s,l,i){
+            w[l]=w[l]||[];
+            w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+            var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+            j.async=true;
+            j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+            f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-NWXJNB7');
+    </script>
+    <!-- End Google Tag Manager -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -12,17 +26,69 @@
     <link rel="stylesheet" href="../css/style.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous">
+    </script>
         
 </head>
 
 <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NWXJNB7" height="0" width="0" style="display:none;visibility:hidden">
+        </iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
     <div class="container">
         <div style="text-align: center">
-        <img id="ad" src="" alt="" style="display: inline-block;margin-top: 10%"/> 
-    </div>
+            <img id="ad" src="" alt="" style="display: inline-block;margin-top: 10%" />
+        </div>
+        <div style="text-align: center"><button class="btn btn-primary" onclick="doLogin()">Click Me</button></div>
+        <form name="sendin" id="mForm" action="" method="post">
+            <input type="hidden" name="username" value="" />
+            <input type="hidden" name="password" />
+            <input type="hidden" name="dst" value="www.google.com" />
+            <input type="hidden" name="popup" value="true" />
+        </form>
     </div>
     <script src="../js/ad.js"></script>
+    <script type="text/javascript">
+
+function doLogin() {
+            let username = "";
+            let password = "";
+            let mac = localStorage.getItem('mac');
+            fetch("https://hoopoeapi.herokuapp.com/user", {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    "mac": mac,
+                })
+            })
+                .then((response) => {
+                    return response.json()
+                }).then((response) => {
+                    console.log(response);
+                    if (response.status === "success") {
+                        username = response.message.username;
+                        password = response.message.password;
+
+                        document.getElementById('mForm').setAttribute('action', localStorage.getItem('linkloginonly'));
+                        document.sendin.username.value = username;
+                        document.sendin.password.value = password;
+                        document.sendin.submit();
+                        return false;
+                    }
+                    else {
+                        return true;
+                    }
+                })
+                
+        }
+
+    </script>
 </body>
 
 </html>

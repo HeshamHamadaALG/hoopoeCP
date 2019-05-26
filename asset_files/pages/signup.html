@@ -1,62 +1,55 @@
-<script>
-    // var urlParams = new URLSearchParams(window.location.search);
-    // var mac = urlParams.get('mac');
-    var mac=localStorage.getItem("mac");
-    console.log(mac);
-</script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-                    <div class="sub-form">
-                          
-                        <form action="" method="" class="login100-form" role="form">
-                          
-                                
-                            <div class="wrap-input100">
-                                <input id="mobile" class="input100 has-val" name="mobile" type="tel" size="18" required />
-                                <!-- <span class="focus-input100"></span>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<div class="sub-form">
+
+    <form action="" method="" class="login100-form" role="form">
+
+
+        <div class="wrap-input100">
+            <input id="mobile" class="input100 has-val" name="mobile" type="tel" size="18" required />
+            <!-- <span class="focus-input100"></span>
                                 <span class="label-input100">Mobile</span> -->
             <!-- <label for="mobile" class="float-label">Mobile</label> -->
         </div>
 
-                            <div class="radio">
-                                <div class="radio-inner">
-                                    <input type="radio" name="sex" value="f" data-icon='\f182' style='border: 0px;height: 4em;'/>
-                                    <input type="radio" name="sex" value="m" data-icon='\f183' style='border: 0px;height: 4em;'/>
-                                </div>
-                            </div>
+        <div class="radio">
+            <div class="radio-inner">
+                <input type="radio" name="sex" value="f" data-icon='\f182' style='border: 0px;height: 4em;' />
+                <input type="radio" name="sex" value="m" data-icon='\f183' style='border: 0px;height: 4em;' />
+            </div>
+        </div>
 
         <div class="wrap-input100">
             <input id="age" class="input100 has-val" name="age" type="number" size="14" min="10" max="99" required
                 placeholder="AGE" />
             <!-- <span class="focus-input100"></span>
                                 <span class="label-input100">Age</span> -->
-                            </div>
+        </div>
 
-                            <div class="signup">
-                                <button class="btn btn-1" type="submit" name="Submit"
-                                    id = "loadValidation" data-loading-text="<i class='fa fa-spinner fa-spin fa-2x'></i>  Sending Code ...">Send me Validation
-                                    SMS</button>
-                            </div>
+        <div class="signup">
+            <button class="btn btn-1" type="submit" name="Submit" id="loadValidation"
+                data-loading-text="<i class='fa fa-spinner fa-spin fa-2x'></i>  Sending Code ...">Send me Validation
+                SMS</button>
+        </div>
 
-                            <div class="alert alert-danger" style = "width: 100%" role="alert">
-                                    A simple danger alert—check it out!
-                            </div>
-                        </form>
+        <div class="alert alert-danger" style="width: 100%" role="alert">
+            A simple danger alert—check it out!
+        </div>
+    </form>
 
-                    </div>
-                </div>
-    <script src="./phone_country_code/intl-tel-input-15.0.0/build/js/intlTelInput.js"></script>
-    <script>
-        var input = document.querySelector("#mobile");
-        window.intlTelInput(input, {
+</div>
+</div>
+<script src="./phone_country_code/intl-tel-input-15.0.0/build/js/intlTelInput.js"></script>
+<script>
+    var input = document.querySelector("#mobile");
+    window.intlTelInput(input, {
         initialCountry: "auto",
         geoIpLookup: function (callback) {
             $.get('https://ipinfo.io', function () { }, "jsonp").then(function (resp) {
                 var countryCode = (resp && resp.country) ? resp.country : "";
                 callback(countryCode);
-            }).then( (resp)=>{
+            }).then((resp) => {
                 let title = document.getElementsByClassName('selected-flag')[0].title;
                 let code = title.split(":")[1].slice(1);
                 console.log(code)
@@ -102,7 +95,7 @@
             });
             $this.button('reset');
             $this.button('loading');
-            $this.attr("disabled",true) ; 
+            $this.attr("disabled", true);
             fetch("http://hoopoeapi.herokuapp.com/users", {
                 method: 'POST',
                 headers: {
@@ -121,19 +114,19 @@
                     console.log(response);
                     if (response.status === "success") {
                         console.log('success');
-                        localStorage.setItem('phone',mobile);
-                        $( "#rightSide" ).load("./asset_files/pages/validation.html");  
+                        localStorage.setItem('phone', mobile);
+                        $("#rightSide").load("./asset_files/pages/validation.html");
                     }
                     else {
                         console.log('fail');
-                        $("#loadValidation").attr("disabled",false) ; 
-                        $("#loadValidation").button("reset") ; 
+                        $("#loadValidation").attr("disabled", false);
+                        $("#loadValidation").button("reset");
                         $(".alert-danger").css({
                             display: 'block',
                         });
-                        $(".alert-danger").html("<p>" + response.message ? response.message!= "undefined" : "Sorry but service not available Now " + "</p>");
+                        $(".alert-danger").html("<p>" + response.message ? response.message != "undefined" : "Sorry but service not available Now " + "</p>");
 
-                        $( "#rightSide" ).load("./asset_files/pages/validation.html");  
+                        $("#rightSide").load("./asset_files/pages/validation.html");
 
                     }
                 })

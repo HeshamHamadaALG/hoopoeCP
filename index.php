@@ -1,5 +1,16 @@
 <?php
-$mac = $_POST['mac']
+    $mac= isset($_POST['mac']) ? $_POST['mac'] : 'mac_not_found';
+    $age = isset($_POST['age']) ? $_POST['age'] : "h_age_not_found";
+    $ip=$_POST['ip'];
+    $username=$_POST['username'];
+    $linklogin=$_POST['link-login'];
+    $linkorig=$_POST['link-orig'];
+    $error=$_POST['error'];
+    $chapid=$_POST['chap-id'];
+    $chapchallenge=$_POST['chap-challenge'];
+    $linkloginonly=$_POST['link-login-only'];
+    $linkorigesc=$_POST['link-orig-esc'];
+    $macesc=$_POST['mac-esc'];
 ?>
 
 <!DOCTYPE html>
@@ -11,6 +22,19 @@ $mac = $_POST['mac']
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>HOOPOE WiFi</title>
     <link rel="stylesheet" href="landingPage.css">
+    <script>
+        
+        let mac = "<?php echo $mac; ?>";
+        let chapid = "<?php echo $chapid?>";
+        let chapchallenge = "<?php echo $chapchallenge?>";
+        let linkloginonly = "<?php echo $linkloginonly?>";
+
+        localStorage.setItem('mac', mac);
+        localStorage.setItem('chapid', chapid);
+        localStorage.setItem('chapchallenge', chapchallenge);
+        localStorage.setItem('linkloginonly', linkloginonly);
+        
+    </script>
 </head>
 
 <body>
