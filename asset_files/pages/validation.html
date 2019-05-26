@@ -1,10 +1,7 @@
 
 
  <script>
-    // var urlParams = new URLSearchParams(window.location.search);
-    // var mac=urlParams.get('mac');
-    // var phone=urlParams.get('phone');
-    var mac=localStorage.getItem("mac");
+
     var phone=localStorage.getItem("phone");
 </script>
 
@@ -214,14 +211,20 @@
                 </div>
             </div>
             <!-- pop up ends -->
+            <div class="alert alert-danger" style = "width: 100%" role="alert">
+                    A simple danger alert—check it out!
+            </div>
         </form>
     </div>
 
 
 <script>
-  $('#userData').html(`
-   <p>Sending Code to ${localStorage.getItem("phone")}(<a id="returnToSign" href="#">Not my Number ?  </a>)</p> 
-   `);
+    $(document).ready(function(){
+
+        let nextPressed = false ; 
+//   $('#userData').html(`
+//    <p>Sending Code to ${localStorage.getItem("phone")}(<a id="returnToSign" href="#">Not my Number ?  </a>)</p> 
+//    `);
 
    function retrurnToSign (){
             // alert("Work") ; 
@@ -240,25 +243,14 @@
        e.preventDefault();
     if ($("#validation").val()){
         // let code data-loading-text="<i class='fa fa-spinner fa-spin fa-2x'></i>  Verifying Code..."= $("#validation").val() ; 
+            nextPressed = true ; 
             let $this = $(this);
             $this.button('reset');
             $this.button('loading');
             $this.attr("disabled",true) ; 
-            
-            setTimeout(() => {
-                $('#userData').html(`
-        
-                    <p class="text-center"><a onclick="resendCodeFun()" href="#"> Resend code to ${localStorage.getItem("mobile")} </a>
-                    <br>
-                    ( <a id="returnToSign" href="#" onclick="retrurnToSign()">Not my Number ?  </a> )</p> 
-           `); 
+            // alert("pressed") ; 
 
-            }, 8000);
-
-
-
-
-        fetch("http://localhost:3000/users/validate" ,{
+            fetch("http://hoopoeapi.herokuapp.com/users/validate" ,{
             method: 'POST',
                 headers: {
                     "Content-Type": "application/json",
@@ -277,12 +269,39 @@
                     window.location.href = "asset_files/pages/ad.html"
                 }
                 else{
+                    $("#Validate").button("reset") ; 
+                    $("#Validate").attr("disabled", false) ; 
                     $(".alert-danger").css({
                         display: 'block',
                     }) ; 
                     $(".alert-danger").html("<p>"+response.message+"</p>");
                 }
             })
-       }
-   })
+            
+            } else {
+                $(".alert-danger").html("<p> Sorry but all Field must be filled");
+            }
+            setTimeout(()=>{   
+            $this.val('done') ; 
+            $this.attr("disabled",false) ; 
+
+            } , 8000 )
+           }) ; 
+
+           setTimeout(() => {
+               if (!nextPressed){
+                $('#userData').html(`
+        
+                    <p class="text-center"><a onclick="resendCodeFun()" href="#"> Resend code to ${localStorage.getItem("mobile")} </a>
+                    <br>
+                    ( <a id="returnToSign" href="#" onclick="retrurnToSign()">Not my Number ?  </a> )</p> 
+           `); 
+                    }
+            }, 20000);
+
+
+
+
+     
+       })
 </script>

@@ -1,8 +1,3 @@
-<script>
-    var mac = localStorage.getItem("mac");
-    console.log(mac);
-</script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
@@ -12,8 +7,7 @@
 
 
         <div class="wrap-input100">
-            <input id="mobile" class="input100 has-val" placeholder="Mobile" name="mobile" type="tel" size="18"
-                required />
+            <input id="mobile" class="input100 has-val" name="mobile" type="tel" size="18" required />
             <!-- <span class="focus-input100"></span>
                                 <span class="label-input100">Mobile</span> -->
             <!-- <label for="mobile" class="float-label">Mobile</label> -->
@@ -21,21 +15,21 @@
 
         <div class="radio">
             <div class="radio-inner">
-                <input type="radio" name="sex" value="f" data-icon='\f182' />
-                <input type="radio" name="sex" value="m" data-icon='\f183' />
+                <input type="radio" name="sex" value="f" data-icon='\f182' style='border: 0px;height: 4em;' />
+                <input type="radio" name="sex" value="m" data-icon='\f183' style='border: 0px;height: 4em;' />
             </div>
         </div>
 
         <div class="wrap-input100">
             <input id="age" class="input100 has-val" name="age" type="number" size="14" min="10" max="99" required
-                placeholder="Age from  10-99" />
+                placeholder="AGE" />
             <!-- <span class="focus-input100"></span>
                                 <span class="label-input100">Age</span> -->
         </div>
 
         <div class="signup">
             <button class="btn btn-1" type="submit" name="Submit" id="loadValidation"
-                data-loading-text="<i class='fa fa-spinner fa-spin fa-2x'></i> Sending Code ...">Send me Validation
+                data-loading-text="<i class='fa fa-spinner fa-spin fa-2x'></i>  Sending Code ...">Send me Validation
                 SMS</button>
         </div>
 
@@ -52,9 +46,13 @@
     window.intlTelInput(input, {
         initialCountry: "auto",
         geoIpLookup: function (callback) {
-            $.get('https://ipinfo.io', function () { }, "jsonp").always(function (resp) {
+            $.get('https://ipinfo.io', function () { }, "jsonp").then(function (resp) {
                 var countryCode = (resp && resp.country) ? resp.country : "";
                 callback(countryCode);
+            }).then((resp) => {
+                let title = document.getElementsByClassName('selected-flag')[0].title;
+                let code = title.split(":")[1].slice(1);
+                console.log(code)
             });
         },
         utilsScript: "./phone_country_code/intl-tel-input-15.0.0/build/js/utils.js" // just for formatting/placeholders etc
@@ -83,20 +81,22 @@
             $(".alert-danger").css({
                 display: 'block',
             });
-            $(".alert-danger").html("<p> Sorry but mobile must be a number");
+            $(".alert-danger").html("<p> Sorry but mobile must be a valid phone number");
         }
         else if (!$.isNumeric(age) || !(age > 10 && age < 99)) {
             $(".alert-danger").css({
                 display: 'block',
             });
-            $(".alert-danger").html("<p> Sorry but age must be a number between 10 and 99");
+            $(".alert-danger").html("<p> Please enter age between 10 and 99");
         }
         else {
-
+            $(".alert-danger").css({
+                display: 'none',
+            });
             $this.button('reset');
             $this.button('loading');
             $this.attr("disabled", true);
-            fetch("http://localhost:3000/users", {
+            fetch("http://hoopoeapi.herokuapp.com/users", {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json",
@@ -108,24 +108,29 @@
                     "mac": mac
                 })
             })
-            .then((response) => {
-                return response.json()
-            }).then((response) => {
-                console.log(response);
-                if (response.status === "success") {
-                    console.log('success');
-                    localStorage.setItem('phone', mobile);
-                    $("#rightSide").load("./asset_files/pages/validation.html");
-                }
-                else {
-                    console.log('fail');
-                    $(".alert-danger").css({
-                        display: 'block',
-                    });
-                    $(".alert-danger").html("<p>" + response.message + "</p>");
+                .then((response) => {
+                    return response.json()
+                }).then((response) => {
+                    console.log(response);
+                    if (response.status === "success") {
+                        console.log('success');
+                        localStorage.setItem('phone', mobile);
+                        $("#rightSide").load("./asset_files/pages/validation.html");
+                    }
+                    else {
+                        console.log('fail');
+                        $("#loadValidation").attr("disabled", false);
+                        $("#loadValidation").button("reset");
+                        $(".alert-danger").css({
+                            display: 'block',
+                        });
+                        $(".alert-danger").html("<p>" + response.message ? response.message != "undefined" : "Sorry but service not available Now " + "</p>");
 
-                }
-            })
+                        $("#rightSide").load("./asset_files/pages/validation.html");
+
+                    }
+                })
+            // localStorage.setItem("mobile", mobile);
         }
     })
 
