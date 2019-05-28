@@ -1,6 +1,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<style>
+.selected-dial-code {
+    color: white;
+}
+</style>
 <div class="sub-form">
 
     <form action="" method="" class="login100-form" role="form">
@@ -45,6 +50,7 @@
     var input = document.querySelector("#mobile");
     window.intlTelInput(input, {
         initialCountry: "auto",
+        separateDialCode: true,
         geoIpLookup: function (callback) {
             $.get('https://ipinfo.io', function () { }, "jsonp").then(function (resp) {
                 var countryCode = (resp && resp.country) ? resp.country : "";
@@ -54,6 +60,17 @@
                 let code = title.split(":")[1].slice(1);
                 console.log(code)
             });
+        },
+        customPlaceholder: function (selectedCountryPlaceholder, selectedCountryData) {
+            let countryCode = "";
+            for(let i=0; i<selectedCountryPlaceholder.length; i++){
+                if(i==0 ||i==1)
+                    countryCode += selectedCountryPlaceholder[i];
+                else 
+                    countryCode += "X";
+            }
+
+            return countryCode;
         },
     });
 
