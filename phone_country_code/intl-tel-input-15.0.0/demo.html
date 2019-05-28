@@ -18,13 +18,8 @@
   <script src="build/js/intlTelInput.js"></script>
   <script>
     var input = document.querySelector("#phone");
-    window.intlTelInput(input, {
-      // allowDropdown: false,
-      // autoHideDialCode: false,
-      // autoPlaceholder: "off",
-      // dropdownContainer: document.body,
-      // excludeCountries: ["us"],
-      // formatOnDisplay: false,
+    window.intlTelInput(input, {  
+    
       geoIpLookup: function(callback) {
          $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
            var countryCode = (resp && resp.country) ? resp.country : "";
@@ -32,13 +27,7 @@
          });
        },
        initialCountry: "auto",
-      // hiddenInput: "full_number",
-      // localizedCountries: { 'de': 'Deutschland' },
-      // nationalMode: false,
-      // onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
-      // placeholderNumberType: "MOBILE",
-      // preferredCountries: ['cn', 'jp'],
-      // separateDialCode: true,
+     
       utilsScript: "build/js/utils.js",
     });
   </script>
