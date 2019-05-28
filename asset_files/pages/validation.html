@@ -1,7 +1,7 @@
 
 
  <script>
-
+    let mac = localStorage.getItem('mac');
     var phone=localStorage.getItem("phone");
 </script>
 
@@ -231,7 +231,19 @@
             $( "#rightSide" ).load( "./asset_files/pages/signup.html" );
            };
     function resendCodeFun(){
-            alert("YA")
+            // alert("YA")
+            fetch("https://hoopoeapi.herokuapp.com/users", {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    "phone": localStorage.getItem('phone'),
+                    "age": parseInt(localStorage.getItem('age')),
+                    "gender": localStorage.getItem('gender'),
+                    "mac": localStorage.getItem('mac')
+                })
+            })
         }
 
 
@@ -251,9 +263,7 @@
             let mac = localStorage.getItem('mac') ; 
             // alert("pressed") ; 
 
-            // fetch("http://hoopoeapi.herokuapp.com/users/validate" ,{
-            fetch("http://192.168.1.178:3000/users/validate" ,{
-
+            fetch("https://hoopoeapi.herokuapp.com/users/validate" ,{
             method: 'POST',
                 headers: {
                     "Content-Type": "application/json",
@@ -295,7 +305,7 @@
                if (!nextPressed){
                 $('#userData').html(`
         
-                    <p class="text-center"><a onclick="resendCodeFun()" href="#"> Resend code to ${localStorage.getItem("mobile")} </a>
+                    <p class="text-center"><a onclick="resendCodeFun()" href="#"> Resend code to ${localStorage.getItem("phone")} ?</a>
                     <br>
                     ( <a id="returnToSign" href="#" onclick="retrurnToSign()">Not my Number ?  </a> )</p> 
            `); 

@@ -7,7 +7,7 @@ let loc=[{lat:1,lng:1},{lat:2,lng:2},{lat:3,lng:3},{lat:4,lng:4},{lat:5,lng:5}];
 let randIndex=Math.floor(Math.random()*(5)) ;
 
 let ad =function (){
-fetch("http://localhost:3000/ads" ,{
+fetch("https://hoopoeapi.herokuapp.com/ads" ,{
         method: 'POST',
         headers: {
             "Content-Type": "application/json",

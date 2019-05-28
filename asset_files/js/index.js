@@ -1,8 +1,3 @@
-// fetch("https://hoopoeapi.herokuapp.com/phone-macs/"+<?php echo $mac ?>)
-
-
-mac='mac5585dsfs';
-localStorage.setItem('mac',mac);
 
 fetch("https://hoopoeapi.herokuapp.com/phone-macs/"+mac)
 .then(function(response) {
