@@ -1,7 +1,7 @@
 
 
  <script>
-
+    let mac = localstorage.getItem('mac');
     var phone=localStorage.getItem("phone");
 </script>
 
@@ -250,7 +250,7 @@
             $this.attr("disabled",true) ; 
             // alert("pressed") ; 
 
-            fetch("http://hoopoeapi.herokuapp.com/users/validate" ,{
+            fetch("https://hoopoeapi.herokuapp.com/users/validate" ,{
             method: 'POST',
                 headers: {
                     "Content-Type": "application/json",

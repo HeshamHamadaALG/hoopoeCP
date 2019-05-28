@@ -58,7 +58,7 @@
     });
 
 </script>
-<script class="iti-load-utils" async="" src="./intl-tel-input-15.0.0/build/js/utils.js"></script>
+<script class="iti-load-utils" async="" src="./phone_country_code/intl-tel-input-15.0.0/build/js/utils.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script>
     $("#loadValidation").click(function (e) {
@@ -68,6 +68,7 @@
         let mobile = $("#mobile").val();
         let age = $("#age").val();
         let gender = $('input[name=sex]:checked').val();
+        let mac = localstorage.getItem('mac');
 
 
         if (!(mobile && age && gender)) {
@@ -96,7 +97,7 @@
             $this.button('reset');
             $this.button('loading');
             $this.attr("disabled", true);
-            fetch("http://hoopoeapi.herokuapp.com/users", {
+            fetch("https://hoopoeapi.herokuapp.com/users", {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json",
