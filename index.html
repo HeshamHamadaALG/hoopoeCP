@@ -42,29 +42,3 @@
 </body>
 
 <script src="asset_files/js/index.js"></script>
-<script>
-    // fetch("https://hoopoeapi.herokuapp.com/phone-macs/"+<?php echo $mac ?>)
-    fetch("https://hoopoeapi.herokuapp.com/phone-macs/"+mac)
-    .then(function(response) {
-        return response.json();
-    })
-    .then(function(response) {
-        if (response.verified)
-            {
-                // redirect to ads page 
-                window.location.href = "asset_files/pages/ad.html"
-                console.log('verified');
-            }
-        else {
-            if(response.message==="User Not existed")
-            {
-                // redirect to sign up button page 
-                window.location.href = "welcome.html"
-            }
-            else if (response.message==='User existed but not verified'){
-                // redirect to validation page 
-                window.location.href = "welcome.html"
-            }          
-        }
-    })
-</script>
