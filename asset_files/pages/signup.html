@@ -47,6 +47,7 @@
 </div>
 <script src="./phone_country_code/intl-tel-input-15.0.0/build/js/intlTelInput.js"></script>
 <script>
+    let code = ''
     var input = document.querySelector("#mobile");
     let country_code = "";
     window.intlTelInput(input, {
@@ -79,6 +80,9 @@
 <script class="iti-load-utils" async="" src="./phone_country_code/intl-tel-input-15.0.0/build/js/utils.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script>
+    $(document).ready(function(){
+
+    
     $("#loadValidation").click(function (e) {
 
         e.preventDefault();
@@ -134,6 +138,9 @@
                     if (response.status === "success") {
                         console.log('success');
                         localStorage.setItem('phone', mobile);
+                        localStorage.setItem('age', age);
+                        localStorage.setItem('gender', gender);
+
                         $("#rightSide").load("./asset_files/pages/validation.html");
                     }
                     else {
@@ -143,15 +150,16 @@
                         $(".alert-danger").css({
                             display: 'block',
                         });
-                        $(".alert-danger").html("<p>" + response.message ? response.message != "undefined" : "Sorry but service not available Now " + "</p>");
+                        $(".alert-danger").html("<p>" + response.message + "</p>");
 
-                        $("#rightSide").load("./asset_files/pages/validation.html");
+                        // $("#rightSide").load("./asset_files/pages/validation.html");
 
                     }
                 })
             // localStorage.setItem("mobile", mobile);
         }
     })
+})
 
 </script>
 
