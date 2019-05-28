@@ -248,9 +248,12 @@
             $this.button('reset');
             $this.button('loading');
             $this.attr("disabled",true) ; 
+            let mac = localStorage.getItem('mac') ; 
             // alert("pressed") ; 
 
-            fetch("http://hoopoeapi.herokuapp.com/users/validate" ,{
+            // fetch("http://hoopoeapi.herokuapp.com/users/validate" ,{
+            fetch("http://192.168.1.178:3000/users/validate" ,{
+
             method: 'POST',
                 headers: {
                     "Content-Type": "application/json",
