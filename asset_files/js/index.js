@@ -20,7 +20,7 @@ fetch("https://hoopoeapi.herokuapp.com/phone-macs/"+mac)
         else if (response.message==='User existed but not verified'){
             // redirect to validation page 
             // window.location.href = "asset_files/pages/validation.html?mac="+mac
-            window.location.href = "asset_files/pages/welcome.html"
+            window.location.href = "welcome.html"
         }
         
     }
