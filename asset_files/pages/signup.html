@@ -49,6 +49,7 @@
 <script>
     let code = ''
     var input = document.querySelector("#mobile");
+    let country_code = "";
     window.intlTelInput(input, {
         initialCountry: "auto",
         separateDialCode: true,
@@ -58,8 +59,8 @@
                 callback(countryCode);
             }).then((resp) => {
                 let title = document.getElementsByClassName('selected-flag')[0].title;
-                 code = title.split(":")[1].slice(1);
-                console.log(code)
+                let code = title.split(":")[1].slice(1);
+                country_code = code;
             });
         },
         customPlaceholder: function (selectedCountryPlaceholder, selectedCountryData) {
@@ -86,7 +87,7 @@
 
         e.preventDefault();
         var $this = $(this);
-        let mobile = $("#mobile").val();
+        let mobile = country_code + $("#mobile").val();
         let age = $("#age").val();
         let gender = $('input[name=sex]:checked').val();
         let mac = localStorage.getItem('mac');
